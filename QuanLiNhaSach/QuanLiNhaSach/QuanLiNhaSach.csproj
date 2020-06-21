@@ -46,29 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmTraCuu.cs">
+    <Compile Include="frmLapbaocao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTraCuu.Designer.cs">
-      <DependentUpon>frmTraCuu.cs</DependentUpon>
+    <Compile Include="frmLapbaocao.Designer.cs">
+      <DependentUpon>frmLapbaocao.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLapPhieuThuTien.cs">
+    <Compile Include="frmLapphieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapPhieuThuTien.Designer.cs">
-      <DependentUpon>frmLapPhieuThuTien.cs</DependentUpon>
+    <Compile Include="frmLapphieu.Designer.cs">
+      <DependentUpon>frmLapphieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLapHoaDon.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapHoaDon.Designer.cs">
-      <DependentUpon>frmLapHoaDon.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLapPhieuNhapSach.cs">
+    <Compile Include="frmQuanlinhanvien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapPhieuNhapSach.Designer.cs">
-      <DependentUpon>frmLapPhieuNhapSach.cs</DependentUpon>
+    <Compile Include="frmQuanlinhanvien.Designer.cs">
+      <DependentUpon>frmQuanlinhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuydinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuydinh.Designer.cs">
+      <DependentUpon>frmQuydinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTracuu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTracuu.Designer.cs">
+      <DependentUpon>frmTracuu.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -78,17 +90,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmTraCuu.resx">
-      <DependentUpon>frmTraCuu.cs</DependentUpon>
+    <EmbeddedResource Include="frmLapbaocao.resx">
+      <DependentUpon>frmLapbaocao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapPhieuThuTien.resx">
-      <DependentUpon>frmLapPhieuThuTien.cs</DependentUpon>
+    <EmbeddedResource Include="frmLapphieu.resx">
+      <DependentUpon>frmLapphieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapHoaDon.resx">
-      <DependentUpon>frmLapHoaDon.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapPhieuNhapSach.resx">
-      <DependentUpon>frmLapPhieuNhapSach.cs</DependentUpon>
+    <EmbeddedResource Include="frmQuanlinhanvien.resx">
+      <DependentUpon>frmQuanlinhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuydinh.resx">
+      <DependentUpon>frmQuydinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTracuu.resx">
+      <DependentUpon>frmTracuu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

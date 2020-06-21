@@ -16,50 +16,14 @@ namespace QuanLiNhaSach
         public frmMain()
         {
             InitializeComponent();
-
-            //form
-            this.DoubleBuffered = true;
-
-            lapphieuSubMenuPanel.Visible = false;
-            lapbaocaoSubMenuPanel.Visible = false;
-            quanliSubMenuPanel.Visible = false;
         }
 
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void ShowSubMenu(Panel subMenu)
-        {
-            if(subMenu.Visible == false)
-            {
-                HideSubMenu();
-                subMenu.Visible = true;
-            }
-            else
-            {
-                subMenu.Visible = false;
-            }
-        }
-
-        private void HideSubMenu()
-        {
-            if (lapphieuSubMenuPanel.Visible == true) lapphieuSubMenuPanel.Visible = false;
-            if (lapbaocaoSubMenuPanel.Visible == true) lapbaocaoSubMenuPanel.Visible = false;
-            if (quanliSubMenuPanel.Visible == true) quanliSubMenuPanel.Visible = false;
+            frmLogin login = new frmLogin();
+            login.ShowDialog();
+            if (login.DialogResult != DialogResult.OK)
+                this.Close();
         }
 
         private Form activeform = null;
@@ -73,114 +37,36 @@ namespace QuanLiNhaSach
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
-            panel2.Controls.Add(form);
-            panel2.Tag = form;
+            childformpanel.Controls.Add(form);
+            childformpanel.Tag = form;
             form.BringToFront();
             form.Show();
         }
 
-		#region LapPhieu
-		private void lapphieuButton_Click(object sender, EventArgs e)
+        private void tracuubutton_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(lapphieuSubMenuPanel);
+            OpenForm(new frmTracuu());
         }
 
-        private void nhapsachButton_Click(object sender, EventArgs e)
+        private void lapphieubutton_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
-            OpenForm(new frmLapPhieuNhapSach());
+            OpenForm(new frmLapphieu());
         }
 
-        private void hoadonButton_Click(object sender, EventArgs e)
+        private void quanlibutton_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
-            OpenForm(new frmLapHoaDon());
+            OpenForm(new frmQuanlinhanvien());
         }
 
-        private void thutienButton_Click(object sender, EventArgs e)
+        private void lapbaocaobutton_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
-            OpenForm(new frmLapPhieuThuTien());
+            OpenForm(new frmLapbaocao());
         }
 
-		#endregion
-
-		#region TraCuu
-		private void tracuuButton_Click(object sender, EventArgs e)
+        private void quydinhbutton_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
-            OpenForm(new frmTraCuu());
+            OpenForm(new frmQuydinh());
         }
 
-		#endregion
-
-		#region LapBaoCao
-		private void lapbaocaoButton_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(lapbaocaoSubMenuPanel);
-        }
-
-        private void baocaotonButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-        }
-
-        private void baocaocongnoButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-        }
-
-		#endregion
-
-		#region QuanLi
-
-		private void quanliButton_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(quanliSubMenuPanel);
-        }
-
-        private void phancongButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-        }
-
-        private void xemthongtinButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-        }
-
-
-        #endregion
-
-        #region TaiKhoan
-        private void taikhoanButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-
-        }
-
-        #endregion
-
-        #region HoTro
-        private void hotroButton_Click(object sender, EventArgs e)
-        {
-            HideSubMenu();
-
-        }
-
-        #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-                this.WindowState = FormWindowState.Maximized;
-            else
-                this.WindowState = FormWindowState.Normal;
-        }
     }
 }

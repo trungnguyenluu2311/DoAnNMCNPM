@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLiNhaSach
 {
-	public partial class frmTracuu : Form
+	public partial class frmQuydinh : Form
 	{
-		public frmTracuu()
+		public frmQuydinh()
 		{
 			InitializeComponent();
 		}

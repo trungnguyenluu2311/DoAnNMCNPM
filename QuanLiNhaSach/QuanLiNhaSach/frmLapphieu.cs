@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QuanLiNhaSach
 {
-	public partial class frmLapHoaDon: Form
+	public partial class frmLapphieu : Form
 	{
-		public frmLapHoaDon()
+		public frmLapphieu()
 		{
 			InitializeComponent();
-		}
-
-		private void closeButton_Click(object sender, EventArgs e)
-		{
-			this.Close();
 		}
 	}
 }
