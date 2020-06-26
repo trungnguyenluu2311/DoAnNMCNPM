@@ -46,17 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmLapbaocao.cs">
+    <Compile Include="frmLapHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapbaocao.Designer.cs">
-      <DependentUpon>frmLapbaocao.cs</DependentUpon>
+    <Compile Include="frmLapHoaDon.Designer.cs">
+      <DependentUpon>frmLapHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLapphieu.cs">
+    <Compile Include="frmLapPhieuThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLapphieu.Designer.cs">
-      <DependentUpon>frmLapphieu.cs</DependentUpon>
+    <Compile Include="frmLapPhieuThu.Designer.cs">
+      <DependentUpon>frmLapPhieuThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLapBaoCao.Designer.cs">
+      <DependentUpon>frmLapBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLapPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLapPhieuNhap.Designer.cs">
+      <DependentUpon>frmLapPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -70,11 +82,11 @@
     <Compile Include="frmQuanlinhanvien.Designer.cs">
       <DependentUpon>frmQuanlinhanvien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmQuydinh.cs">
+    <Compile Include="frmQuyDinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQuydinh.Designer.cs">
-      <DependentUpon>frmQuydinh.cs</DependentUpon>
+    <Compile Include="frmQuyDinh.Designer.cs">
+      <DependentUpon>frmQuyDinh.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTracuu.cs">
       <SubType>Form</SubType>
@@ -90,11 +102,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmLapbaocao.resx">
-      <DependentUpon>frmLapbaocao.cs</DependentUpon>
+    <EmbeddedResource Include="frmLapBaoCao.resx">
+      <DependentUpon>frmLapBaoCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLapphieu.resx">
-      <DependentUpon>frmLapphieu.cs</DependentUpon>
+    <EmbeddedResource Include="frmLapHoaDon.resx">
+      <DependentUpon>frmLapHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLapPhieuNhap.resx">
+      <DependentUpon>frmLapPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLapPhieuThu.resx">
+      <DependentUpon>frmLapPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -102,8 +120,8 @@
     <EmbeddedResource Include="frmQuanlinhanvien.resx">
       <DependentUpon>frmQuanlinhanvien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmQuydinh.resx">
-      <DependentUpon>frmQuydinh.cs</DependentUpon>
+    <EmbeddedResource Include="frmQuyDinh.resx">
+      <DependentUpon>frmQuyDinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTracuu.resx">
       <DependentUpon>frmTracuu.cs</DependentUpon>

@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace QuanLiNhaSach
 {
-	public partial class frmLapBaoCao : Form
+	public partial class frmLapHoaDon : Form
 	{
-		public frmLapBaoCao()
+		public frmLapHoaDon()
 		{
 			InitializeComponent();
 		}
+
 	}
 }

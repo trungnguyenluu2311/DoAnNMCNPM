@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLiNhaSach
 {
-	public partial class frmLapphieu : Form
+	public partial class frmLapPhieuThu : Form
 	{
-		public frmLapphieu()
+		public frmLapPhieuThu()
 		{
 			InitializeComponent();
 		}

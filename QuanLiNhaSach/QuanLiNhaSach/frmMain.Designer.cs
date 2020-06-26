@@ -62,7 +62,7 @@
 			this.quydinhbutton.FlatAppearance.BorderSize = 0;
 			this.quydinhbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.quydinhbutton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.quydinhbutton.Location = new System.Drawing.Point(0, 308);
+			this.quydinhbutton.Location = new System.Drawing.Point(0, 225);
 			this.quydinhbutton.Name = "quydinhbutton";
 			this.quydinhbutton.Size = new System.Drawing.Size(158, 77);
 			this.quydinhbutton.TabIndex = 5;
@@ -76,7 +76,7 @@
 			this.lapbaocaobutton.FlatAppearance.BorderSize = 0;
 			this.lapbaocaobutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.lapbaocaobutton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lapbaocaobutton.Location = new System.Drawing.Point(0, 231);
+			this.lapbaocaobutton.Location = new System.Drawing.Point(0, 148);
 			this.lapbaocaobutton.Name = "lapbaocaobutton";
 			this.lapbaocaobutton.Size = new System.Drawing.Size(158, 77);
 			this.lapbaocaobutton.TabIndex = 4;
@@ -90,7 +90,7 @@
 			this.quanlibutton.FlatAppearance.BorderSize = 0;
 			this.quanlibutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.quanlibutton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.quanlibutton.Location = new System.Drawing.Point(0, 154);
+			this.quanlibutton.Location = new System.Drawing.Point(0, 71);
 			this.quanlibutton.Name = "quanlibutton";
 			this.quanlibutton.Size = new System.Drawing.Size(158, 77);
 			this.quanlibutton.TabIndex = 3;
@@ -104,9 +104,9 @@
 			this.lapphieubutton.FlatAppearance.BorderSize = 0;
 			this.lapphieubutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.lapphieubutton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lapphieubutton.Location = new System.Drawing.Point(0, 77);
+			this.lapphieubutton.Location = new System.Drawing.Point(0, 0);
 			this.lapphieubutton.Name = "lapphieubutton";
-			this.lapphieubutton.Size = new System.Drawing.Size(158, 77);
+			this.lapphieubutton.Size = new System.Drawing.Size(158, 71);
 			this.lapphieubutton.TabIndex = 2;
 			this.lapphieubutton.Text = "Lập phiếu";
 			this.lapphieubutton.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
 			// 
 			// tracuubutton
 			// 
-			this.tracuubutton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.tracuubutton.BackColor = System.Drawing.SystemColors.Control;
 			this.tracuubutton.FlatAppearance.BorderSize = 0;
 			this.tracuubutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.tracuubutton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,7 +123,7 @@
 			this.tracuubutton.Size = new System.Drawing.Size(158, 77);
 			this.tracuubutton.TabIndex = 1;
 			this.tracuubutton.Text = "Tra cứu";
-			this.tracuubutton.UseVisualStyleBackColor = true;
+			this.tracuubutton.UseVisualStyleBackColor = false;
 			this.tracuubutton.Click += new System.EventHandler(this.tracuubutton_Click);
 			// 
 			// toppanel
@@ -139,11 +139,10 @@
 			// label1
 			// 
 			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(210, 18);
+			this.label1.Location = new System.Drawing.Point(178, 8);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(411, 59);
+			this.label1.Size = new System.Drawing.Size(515, 73);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "QUẢN LÍ NHÀ SÁCH";
 			// 
@@ -158,7 +157,7 @@
 			// 
 			// frmMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(833, 565);
 			this.Controls.Add(this.childformpanel);
@@ -173,7 +172,6 @@
 			this.Load += new System.EventHandler(this.frmMain_Load);
 			this.menupanel.ResumeLayout(false);
 			this.toppanel.ResumeLayout(false);
-			this.toppanel.PerformLayout();
 			this.ResumeLayout(false);
 
         }

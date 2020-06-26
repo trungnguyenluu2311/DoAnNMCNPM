@@ -50,7 +50,7 @@ namespace QuanLiNhaSach
 
         private void lapphieubutton_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmLapphieu());
+            OpenForm(new frmLapPhieuNhap());
         }
 
         private void quanlibutton_Click(object sender, EventArgs e)
@@ -60,12 +60,12 @@ namespace QuanLiNhaSach
 
         private void lapbaocaobutton_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmLapbaocao());
+            OpenForm(new frmLapBaoCao());
         }
 
         private void quydinhbutton_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmQuydinh());
+            OpenForm(new frmQuyDinh());
         }
 
     }
