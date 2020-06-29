@@ -4,18 +4,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using QLNS_BLL;
-using QLNS_DTO;
 
 namespace WebAPI.Controllers
 {
     public class UserController : ApiController
     {
         // GET: api/User
-        public IEnumerable<UserDTO> Get()
+        public IEnumerable<string> Get()
         {
-            UserBLL bll = new UserBLL();
-            return bll.GetAll();
+            return new string[] { "value1", "value2" };
         }
 
         // GET: api/User/5
@@ -25,24 +22,18 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/User
-        public void Post([FromBody]UserDTO value)
+        public void Post([FromBody]string value)
         {
-            UserBLL bll = new UserBLL();
-            bll.Insert(value);
         }
 
         // PUT: api/User/5
-        public void Put(string id, [FromBody]UserDTO value)
+        public void Put(int id, [FromBody]string value)
         {
-            UserBLL bll = new UserBLL();
-            bll.Update(id, value);
         }
 
         // DELETE: api/User/5
-        public void Delete(string id)
+        public void Delete(int id)
         {
-            UserBLL bll = new UserBLL();
-            bll.Delete(id);
         }
     }
 }

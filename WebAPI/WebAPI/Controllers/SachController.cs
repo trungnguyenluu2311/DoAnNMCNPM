@@ -4,45 +4,55 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using QLNS_BLL;
-using QLNS_DTO;
+using QLNS.BL;
+using QLNS.DL;
 
 namespace WebAPI.Controllers
 {
     public class SachController : ApiController
     {
         // GET: api/Sach
-        public IEnumerable<SachDTO> Get()
+        public IEnumerable<Sach> Get()
         {
-            SachBLL bll = new SachBLL();
-            return bll.GetAll();
+            SachBL bl = new SachBL();
+            return bl.GetAll();
         }
 
-        // GET: api/Sach/5
-        public string Get(int id)
+        //GET: api/Sach/5
+        public Sach Get(string id)
         {
-            return "value";
+            SachBL bl = new SachBL();
+            return bl.Get(id);
         }
 
-        // POST: api/Sach
-        public void Post([FromBody]SachDTO value)
+        //GET: api/Sach/id={id};tensach={tensach};theloai={theloai};tacgia={tacgia}
+        [Route("api/Sach/id={id};tensach={tensach};theloai={theloai};tacgia={tacgia}")]
+        [HttpGet]
+        public List<Sach> Get(string id = "", string tensach = "", string theloai = "", string tacgia = "")
+		{
+			SachBL bl = new SachBL();
+			return bl.GetBy(id, tensach, theloai, tacgia);
+		}
+
+		// POST: api/Sach
+		public void Post([FromBody]Sach value)
         {
-            SachBLL bll = new SachBLL();
-            bll.Insert(value);
+            SachBL bl = new SachBL();
+            bl.Insert(value);
         }
 
         // PUT: api/Sach/5
-        public void Put(string id, [FromBody]SachDTO value)
+        public void Put(string id, [FromBody]Sach value)
         {
-            SachBLL bll = new SachBLL();
-            bll.Update(id, value);
+            SachBL bl = new SachBL();
+            bl.Update(id, value);
         }
 
         // DELETE: api/Sach/5
         public void Delete(string id)
         {
-            SachBLL bll = new SachBLL();
-            bll.Delete(id);
+            SachBL bl = new SachBL();
+            bl.Delete(id);
         }
     }
 }
