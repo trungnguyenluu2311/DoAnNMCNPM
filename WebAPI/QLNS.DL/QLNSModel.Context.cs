@@ -137,5 +137,103 @@ namespace QLNS.DL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSachBy_Result>("GetSachBy", masachParameter, tensachParameter, theloaiParameter, tacgiaParameter);
         }
+    
+        public virtual int DeleteKhachHang(string makh)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteKhachHang", makhParameter);
+        }
+    
+        public virtual ObjectResult<GetAllKhachHang_Result> GetAllKhachHang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllKhachHang_Result>("GetAllKhachHang");
+        }
+    
+        public virtual ObjectResult<GetKhachHang_Result> GetKhachHang(string makh)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKhachHang_Result>("GetKhachHang", makhParameter);
+        }
+    
+        public virtual int InsertKhachHang(string makh, string tenkh, string diachi, string sdt, string email)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertKhachHang", makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter);
+        }
+    
+        public virtual int UpdateKhachHang(string makh, string tenkh, string diachi, string sdt, string email)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateKhachHang", makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter);
+        }
+    
+        public virtual ObjectResult<GetKhachHangBy_Result> GetKhachHangBy(string makh, string tenkh, string diachi, string sdt, string email)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKhachHangBy_Result>("GetKhachHangBy", makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter);
+        }
     }
 }

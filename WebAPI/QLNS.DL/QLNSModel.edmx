@@ -61,6 +61,7 @@
           <Property Name="MaHD" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="NgayLap" Type="datetime" />
           <Property Name="MaKH" Type="varchar" MaxLength="6" />
+          <Property Name="ThanhTien" Type="money" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -239,10 +240,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="DeleteSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetKhachHangBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="varchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
         </Function>
@@ -252,6 +267,13 @@
           <Parameter Name="theloai" Type="nvarchar" Mode="In" />
           <Parameter Name="tacgia" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="InsertKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="varchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="InsertSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
           <Parameter Name="tensach" Type="nvarchar" Mode="In" />
@@ -259,6 +281,13 @@
           <Parameter Name="tacgia" Type="nvarchar" Mode="In" />
           <Parameter Name="dongia" Type="money" Mode="In" />
           <Parameter Name="soluong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="varchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
@@ -393,6 +422,7 @@
           <Property Name="MaKH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MaHD__4BAC3F29" FromRole="HoaDon" ToRole="CTHD" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__4E88ABD4" FromRole="HoaDon" ToRole="KhachHang" />
+          <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -660,6 +690,34 @@
             <Parameter Name="theloai" Mode="In" Type="String" />
             <Parameter Name="tacgia" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="DeleteKhachHang">
+          <Parameter Name="makh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllKhachHang" ReturnType="Collection(QLNHASACHModel.GetAllKhachHang_Result)" />
+          <FunctionImport Name="GetKhachHang" ReturnType="Collection(QLNHASACHModel.GetKhachHang_Result)">
+          <Parameter Name="makh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertKhachHang">
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateKhachHang">
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetKhachHangBy" ReturnType="Collection(QLNHASACHModel.GetKhachHangBy_Result)">
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -684,6 +742,30 @@
           <Property Type="String" Name="TacGia" Nullable="true" MaxLength="40" />
           <Property Type="Decimal" Name="DonGia" Nullable="true" Precision="19" />
           <Property Type="Int32" Name="SoLuong" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllKhachHang_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="TenKH" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="DienThoai" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="TienNo" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="GetKhachHang_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="TenKH" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="DienThoai" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="TienNo" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="GetKhachHangBy_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="TenKH" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="DienThoai" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="TienNo" Nullable="true" Precision="19" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -744,6 +826,7 @@
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="QLNHASACHModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -849,6 +932,45 @@
                 <ScalarProperty Name="TacGia" ColumnName="TacGia" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteKhachHang" FunctionName="QLNHASACHModel.Store.DeleteKhachHang" />
+          <FunctionImportMapping FunctionImportName="GetAllKhachHang" FunctionName="QLNHASACHModel.Store.GetAllKhachHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetAllKhachHang_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TienNo" ColumnName="TienNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetKhachHang" FunctionName="QLNHASACHModel.Store.GetKhachHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetKhachHang_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TienNo" ColumnName="TienNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertKhachHang" FunctionName="QLNHASACHModel.Store.InsertKhachHang" />
+          <FunctionImportMapping FunctionImportName="UpdateKhachHang" FunctionName="QLNHASACHModel.Store.UpdateKhachHang" />
+          <FunctionImportMapping FunctionImportName="GetKhachHangBy" FunctionName="QLNHASACHModel.Store.GetKhachHangBy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetKhachHangBy_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TienNo" ColumnName="TienNo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

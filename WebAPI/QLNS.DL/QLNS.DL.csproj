@@ -65,7 +65,16 @@
     <Compile Include="CTPN.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllKhachHang_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllSach_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKhachHangBy_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKhachHang_Result.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSachBy_Result.cs">

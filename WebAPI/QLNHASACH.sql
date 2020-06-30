@@ -1,5 +1,7 @@
 CREATE DATABASE QLNHASACH
+go
 USE QLNHASACH
+go
 
 CREATE TABLE Users
 (
@@ -8,6 +10,7 @@ CREATE TABLE Users
 	Password varchar(8),
 	QuyenHan int
 )
+go
 
 CREATE TABLE Sach
 (
@@ -18,6 +21,7 @@ CREATE TABLE Sach
 	DonGia money,
 	SoLuong int
 )
+go
 
 CREATE TABLE KhachHang
 (
@@ -28,12 +32,14 @@ CREATE TABLE KhachHang
 	Email varchar(20),
 	TienNo money
 )
+go
 
 CREATE TABLE PhieuNhapSach
 (
 	MaPN varchar(6) PRIMARY KEY,
 	NgayNhap datetime
 )
+go
 
 CREATE TABLE CTPNS
 (
@@ -44,13 +50,16 @@ CREATE TABLE CTPNS
 
 	CONSTRAINT PK_CTPN PRIMARY KEY(MaPN, MaSach)
 )
+go
 
 CREATE TABLE HoaDon
 (
 	MaHD varchar(6) PRIMARY KEY,
 	NgayLap datetime,
 	MaKH varchar(6),
+	ThanhTien money
 )
+go
 
 CREATE TABLE CTHD
 (
@@ -61,6 +70,7 @@ CREATE TABLE CTHD
 
 	CONSTRAINT PK_CTHD PRIMARY KEY(MaHD, MaSach)
 )
+go
 
 CREATE TABLE PhieuThuTien
 (
@@ -69,12 +79,14 @@ CREATE TABLE PhieuThuTien
 	NgayThuTien datetime,
 	TienThu money,
 )
+go
 
 CREATE TABLE BaoCao
 (
 	MaBC varchar(6) PRIMARY KEY,
 	Thang int,
 )
+go
 
 CREATE TABLE CTBCNOCONG
 (
@@ -86,6 +98,7 @@ CREATE TABLE CTBCNOCONG
 
 	CONSTRAINT PK_CTBCTON PRIMARY KEY(MaBC, MaKH)
 )
+go
 
 CREATE TABLE CTBCTON
 (
@@ -97,50 +110,139 @@ CREATE TABLE CTBCTON
 
 	CONSTRAINT PK_CTBCNOCONG PRIMARY KEY(MaBC, MaSach)
 )
+go
 
 
 --FK CTPNS_SACH, CTPNS_PNS
 ALTER TABLE CTPNS
 ADD FOREIGN KEY(MaPN) REFERENCES PhieuNhapSach(MaPN)
+go
+
 ALTER TABLE CTPNS
 ADD FOREIGN KEY(MaSach) REFERENCES Sach(MaSach)
+go
 
 --FK CTHD_SAH, CTHD_HD
 ALTER TABLE CTHD
 ADD FOREIGN KEY(MaHD) REFERENCES HoaDon(MaHD)
+go
+
 ALTER TABLE CTHD
 ADD FOREIGN KEY(MaSach) REFERENCES Sach(MaSach)
+go
 
 --FK THUTIEN_KH
 ALTER TABLE PhieuThuTien
 ADD FOREIGN KEY(MaKH) REFERENCES KhachHang(MaKH)
+go
 
 --FK HOADON_KH
 ALTER TABLE HoaDon
 ADD FOREIGN KEY(MaKH) REFERENCES KhachHang(MaKH)
+go
 
 --FK CTBCNOCONG_BC, CTBCNOCONG_KH
 ALTER TABLE CTBCNOCONG
 ADD FOREIGN KEY(MaBC) REFERENCES BaoCao(MaBC)
+go
+
 ALTER TABLE CTBCNOCONG
 ADD FOREIGN KEY(MaKH) REFERENCES KhachHang(MaKH)
+go
 
 --FK CTBCTON_BC, CTBCTON_SACH
 ALTER TABLE CTBCTON
 ADD FOREIGN KEY(MaBC) REFERENCES BaoCao(MaBC)
+go
+
 ALTER TABLE CTBCTON
 ADD FOREIGN KEY(MaSach) REFERENCES Sach(MaSach)
+go
 
---InsertData
+--
+--DATA
+--
 insert into Users values('US0001','admin0','admin','0')
 insert into Users values('US0002','ql_01','quanli','1')
 insert into Users values('US0003','nv01','nhanvien','2')
+select* from Users
+go
 
-insert into Sach values('SA0001','Sample data 1','sample1','dev','1000','1')
-insert into Sach values('SA0002','Sample data 2','sample2','dev','1000','10')
-insert into Sach values('SA0003','Sample data 3','sample1','dev','1000','69')
-insert into Sach values('SA0004','Sample data 4','sample3','dev','1000','20')
+insert into Sach values('SA0001','Sample data 1','sample1','dev','1500','1')
+insert into Sach values('SA0002','Sample data 2','sample2','dev','1300','10')
+insert into Sach values('SA0003','Sample data 3','sample1','dev','1100','69')
+insert into Sach values('SA0004','Sample data 4','sample3','dev','1250','20')
+select * from Sach
+go
 
+insert into KhachHang values('KH0001','Khach hang 1','Tp.HCM','012345678','mail_1@abc.cd','0')
+insert into KhachHang values('KH0002','Khach hang 2','Ha Noi','0147852369','mail_2@abc.cd','0')
+insert into KhachHang values('KH0003','Khach hang 3','Binh Duong','0369741258','mail_3@abc.cd','0')
+insert into KhachHang values('KH0004','Khach hang 4','Da Nang','0149763258','mail_4@abc.cd','0')
+select * from KhachHang
+go
+
+insert into PhieuNhapSach values('PN0001','1-7-2019')
+insert into PhieuNhapSach values('PN0002','1-9-2019')
+insert into PhieuNhapSach values('PN0003','1-11-2019')
+insert into PhieuNhapSach values('PN0004','1-1-2020')
+insert into PhieuNhapSach values('PN0005','1-3-2020')
+insert into PhieuNhapSach values('PN0006','1-5-2020')
+select * from PhieuNhapSach
+go
+
+insert into CTPNS  values('PN0001','SA0001','20','1000')
+insert into CTPNS  values('PN0001','SA0003','30','1200')
+insert into CTPNS  values('PN0001','SA0004','15','1050')
+insert into CTPNS  values('PN0002','SA0002','20','1000')
+insert into CTPNS  values('PN0002','SA0004','10','1200')
+insert into CTPNS  values('PN0003','SA0001','20','1450')
+insert into CTPNS  values('PN0003','SA0002','20','1350')
+insert into CTPNS  values('PN0003','SA0003','40','1100')
+insert into CTPNS  values('PN0004','SA0001','20','1500')
+insert into CTPNS  values('PN0005','SA0002','15','1100')
+insert into CTPNS  values('PN0005','SA0003','30','1000')
+insert into CTPNS  values('PN0005','SA0004','15','1250')
+insert into CTPNS  values('PN0006','SA0002','10','1300')
+insert into CTPNS  values('PN0006','SA0003','10','1100')
+select * from CTPNS
+go
+
+insert into HoaDon values('HD0001','9-2-2019','KH0002','10500')
+insert into HoaDon values('HD0002','12-25-2019','KH0001','45000')
+insert into HoaDon values('HD0003','2-14-2020','KH0003','6000')
+insert into HoaDon values('HD0004','3-8-2020','KH0004','1400')
+insert into HoaDon values('HD0005','4-30-2020','KH0001','3100')
+select * from HoaDon
+go
+
+insert into CTHD values('HD0001','SA0001','5','1100')
+insert into CTHD values('HD0001','SA0002','5','1000')
+insert into CTHD values('HD0002','SA0001','10','1200')
+insert into CTHD values('HD0002','SA0002','10','1000')
+insert into CTHD values('HD0002','SA0003','10','1300')
+insert into CTHD values('HD0002','SA0004','10','1000')
+insert into CTHD values('HD0003','SA0004','4','1500')
+insert into CTHD values('HD0004','SA0002','1','1400')
+insert into CTHD values('HD0005','SA0002','1','1000')
+insert into CTHD values('HD0005','SA0003','1','1100')
+insert into CTHD values('HD0005','SA0004','1','1000')
+select * from CTHD
+go
+
+insert into PhieuThuTien values('PT0001','KH0002','9-2-2019','10500')
+insert into PhieuThuTien values('PT0002','KH0001','12-26-2019','45000')
+insert into PhieuThuTien values('PT0003','KH0003','2-15-2020','6000')
+insert into PhieuThuTien values('PT0004','KH0004','3-8-2020','1400')
+insert into PhieuThuTien values('PT0005','KH0001','5-30-2020','3100')
+select * from PhieuThuTien
+go
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 1
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
 
 
 -- PROCEDURE
@@ -155,39 +257,6 @@ end
 go
 
 
--- InsertUser
-create procedure InsertUser
-@userid varchar(6), @username varchar(20), @password varchar(6), @quyenhan varchar(6)
-as
-begin
-	insert into Users(Id,Username,Password,QuyennHan) 
-	values (@userid, @username, @password, @quyenhan)
-end
-go
-
---DeleteUser
-create procedure DeleteUser
-@userid varchar(6)
-as
-begin
-	delete from Users
-	where Id = @userid
-end
-go
-
-
---UpdateUser
-create procedure UpdateUser
-@userid varchar(6), @password varchar(6), @quyenhan varchar(6)
-as
-begin
-	update Users 
-	set Password = @password, QuyenHan = @quyenhan
-	where Id = @userid
-end
-go
-
-
 --GetAllSach
 create procedure GetAllSach
 as
@@ -196,6 +265,7 @@ begin
 end
 go
 
+--Get sach
 create procedure GetSach
 @masach varchar(6)
 as
@@ -205,6 +275,7 @@ begin
 end
 go
 
+--Get sach by
 create procedure GetSachBy
 @masach varchar(6)='', @tensach nvarchar(40)='', @theloai nvarchar(20)='', @tacgia nvarchar(40)=''
 as
@@ -244,5 +315,71 @@ begin
 	update Sach
 	set TenSach = @tensach, TacGia = @tacgia, TheLoai = @theloai, DonGia = @dongia
 	where MaSach = @masach
+end
+go
+
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 2
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+-- Get all khach hang
+create procedure GetAllKhachHang
+as
+begin
+	select * from KhachHang
+end
+go
+
+--get khach hang
+create procedure GetKhachHang
+@makh varchar(6)
+as
+begin
+	select * from KhachHang
+	where MaKH = @makh
+end
+go
+
+--get khach hang by
+create procedure GetKhachHangBy
+@makh varchar(6), @tenkh varchar(40), @diachi varchar(60), @sdt varchar(10), @email varchar(20)
+as
+begin
+	select * from KhachHang
+	where MaKH like @makh+'%' and TenKH like @tenkh+'%' and DiaChi like @diachi+'%' and DienThoai like @sdt+'%' and Email like @email+'%'
+end
+go
+
+--insert khach hang
+create procedure InsertKhachHang
+@makh varchar(6), @tenkh varchar(40), @diachi varchar(60), @sdt varchar(10), @email varchar(20)
+as
+begin
+	insert into KhachHang(MaKH, TenKH, DiaChi, DienThoai, Email)
+	values (@makh, @tenkh, @diachi, @sdt, @email)
+end
+go
+
+--update khach hang
+create procedure UpdateKhachHang
+@makh varchar(6), @tenkh varchar(40), @diachi varchar(60), @sdt varchar(10), @email varchar(20)
+as
+begin
+	update KhachHang 
+	set TenKH = @tenkh, DiaChi = @diachi, DienThoai = @sdt, Email = @email
+	where MaKH = @makh
+end
+go
+
+--delete khach hang
+create procedure DeleteKhachHang
+@makh varchar(6)
+as
+begin
+	delete from KhachHang 
+	where MaKH = @makh
 end
 go
