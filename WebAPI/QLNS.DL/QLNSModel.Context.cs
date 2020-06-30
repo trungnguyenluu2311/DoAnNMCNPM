@@ -235,5 +235,70 @@ namespace QLNS.DL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetKhachHangBy_Result>("GetKhachHangBy", makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter);
         }
+    
+        public virtual int DeletePhieuThuTien(string mapt)
+        {
+            var maptParameter = mapt != null ?
+                new ObjectParameter("mapt", mapt) :
+                new ObjectParameter("mapt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeletePhieuThuTien", maptParameter);
+        }
+    
+        public virtual ObjectResult<GetAllPhieuThuTien_Result> GetAllPhieuThuTien()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPhieuThuTien_Result>("GetAllPhieuThuTien");
+        }
+    
+        public virtual ObjectResult<GetPhieuThuTien_Result> GetPhieuThuTien(string mapt)
+        {
+            var maptParameter = mapt != null ?
+                new ObjectParameter("mapt", mapt) :
+                new ObjectParameter("mapt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPhieuThuTien_Result>("GetPhieuThuTien", maptParameter);
+        }
+    
+        public virtual int InsertPhieuThuTien(string mapt, string makh, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
+        {
+            var maptParameter = mapt != null ?
+                new ObjectParameter("mapt", mapt) :
+                new ObjectParameter("mapt", typeof(string));
+    
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var ngaythuParameter = ngaythu.HasValue ?
+                new ObjectParameter("ngaythu", ngaythu) :
+                new ObjectParameter("ngaythu", typeof(System.DateTime));
+    
+            var tienthuParameter = tienthu.HasValue ?
+                new ObjectParameter("tienthu", tienthu) :
+                new ObjectParameter("tienthu", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPhieuThuTien", maptParameter, makhParameter, ngaythuParameter, tienthuParameter);
+        }
+    
+        public virtual int UpdatePhieuThuTien(string mapt, string makh, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
+        {
+            var maptParameter = mapt != null ?
+                new ObjectParameter("mapt", mapt) :
+                new ObjectParameter("mapt", typeof(string));
+    
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var ngaythuParameter = ngaythu.HasValue ?
+                new ObjectParameter("ngaythu", ngaythu) :
+                new ObjectParameter("ngaythu", typeof(System.DateTime));
+    
+            var tienthuParameter = tienthu.HasValue ?
+                new ObjectParameter("tienthu", tienthu) :
+                new ObjectParameter("tienthu", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePhieuThuTien", maptParameter, makhParameter, ngaythuParameter, tienthuParameter);
+        }
     }
 }

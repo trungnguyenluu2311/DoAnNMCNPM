@@ -383,3 +383,59 @@ begin
 	where MaKH = @makh
 end
 go
+
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 3
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+--get all phieu thu tien
+create procedure GetAllPhieuThuTien
+as
+begin
+	select * from PhieuThuTien
+end
+go
+
+--get phieu thu 
+create procedure GetPhieuThuTien
+@mapt varchar(6)
+as
+begin
+	select * from PhieuThuTien
+	where MaPT = @mapt
+end
+go
+
+-- insert phieu thu tien
+create procedure InsertPhieuThuTien
+@mapt varchar(6), @makh varchar(6), @ngaythu datetime, @tienthu money
+as
+begin
+	insert into PhieuThuTien(MaPT, MaKH, NgayThuTien, TienThu)
+	values (@mapt, @makh, @ngaythu, @tienthu)
+end
+go
+
+-- update pheiu thu tien
+create procedure UpdatePhieuThuTien
+@mapt varchar(6), @makh varchar(6), @ngaythu datetime, @tienthu money
+as
+begin
+	update PhieuThuTien
+	set MaKH = @makh, NgayThuTien = @ngaythu, TienThu = @tienthu
+	where MaPT = @mapt
+end
+go
+
+-- delete pheiu thu tien
+create procedure DeletePhieuThuTien
+@mapt varchar(6)
+as
+begin
+	delete from PhieuThuTien
+	where MaPT = @mapt
+end
+go

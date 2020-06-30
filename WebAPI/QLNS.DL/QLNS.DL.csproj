@@ -68,6 +68,9 @@
     <Compile Include="GetAllKhachHang_Result.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllPhieuThuTien_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllSach_Result.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetKhachHang_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPhieuThuTien_Result.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSachBy_Result.cs">

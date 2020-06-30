@@ -4,36 +4,60 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using QLNS.BL;
+using QLNS.DL;
 
 namespace WebAPI.Controllers
 {
     public class PhieuThuTienController : ApiController
     {
         // GET: api/PhieuThuTien
-        public IEnumerable<string> Get()
+        public IEnumerable<GetAllPhieuThuTien_Result> Get()
         {
-            return new string[] { "value1", "value2" };
+            PhieuThuTienBL bl = new PhieuThuTienBL();
+            return bl.GetAll();
         }
 
         // GET: api/PhieuThuTien/5
-        public string Get(int id)
+        public GetPhieuThuTien_Result Get(string id)
         {
-            return "value";
+            PhieuThuTienBL bl = new PhieuThuTienBL();
+            return bl.Get(id);
         }
 
         // POST: api/PhieuThuTien
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Models.PhieuThuTien value)
         {
+            PhieuThuTienBL bl = new PhieuThuTienBL();
+
+            PhieuThuTien phieu = new PhieuThuTien();
+            phieu.MaPT = value.MaPT;
+            phieu.MaKH = value.MaKH;
+            phieu.NgayThuTien = value.NgayThuTien;
+            phieu.TienThu = value.TienThu;
+
+            bl.Insert(phieu);
         }
 
         // PUT: api/PhieuThuTien/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]Models.PhieuThuTien value)
         {
+            PhieuThuTienBL bl = new PhieuThuTienBL();
+
+            PhieuThuTien phieu = new PhieuThuTien();
+            phieu.MaPT = value.MaPT;
+            phieu.MaKH = value.MaKH;
+            phieu.NgayThuTien = value.NgayThuTien;
+            phieu.TienThu = value.TienThu;
+
+            bl.Update(id, phieu);
         }
 
         // DELETE: api/PhieuThuTien/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            PhieuThuTienBL bl = new PhieuThuTienBL();
+            bl.Delete(id);
         }
     }
 }

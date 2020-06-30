@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KhachHangBL.cs" />
+    <Compile Include="PhieuThuTienBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SachBL.cs" />
   </ItemGroup>

@@ -243,10 +243,14 @@
         <Function Name="DeleteKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="DeletePhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapt" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="DeleteSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
@@ -257,6 +261,9 @@
           <Parameter Name="diachi" Type="varchar" Mode="In" />
           <Parameter Name="sdt" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapt" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
@@ -274,6 +281,12 @@
           <Parameter Name="sdt" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="InsertPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapt" Type="varchar" Mode="In" />
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="ngaythu" Type="datetime" Mode="In" />
+          <Parameter Name="tienthu" Type="money" Mode="In" />
+        </Function>
         <Function Name="InsertSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
           <Parameter Name="tensach" Type="nvarchar" Mode="In" />
@@ -288,6 +301,12 @@
           <Parameter Name="diachi" Type="varchar" Mode="In" />
           <Parameter Name="sdt" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdatePhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapt" Type="varchar" Mode="In" />
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="ngaythu" Type="datetime" Mode="In" />
+          <Parameter Name="tienthu" Type="money" Mode="In" />
         </Function>
         <Function Name="UpdateSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="varchar" Mode="In" />
@@ -718,6 +737,25 @@
             <Parameter Name="sdt" Mode="In" Type="String" />
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="DeletePhieuThuTien">
+            <Parameter Name="mapt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPhieuThuTien" ReturnType="Collection(QLNHASACHModel.GetAllPhieuThuTien_Result)" />
+          <FunctionImport Name="GetPhieuThuTien" ReturnType="Collection(QLNHASACHModel.GetPhieuThuTien_Result)">
+            <Parameter Name="mapt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertPhieuThuTien">
+            <Parameter Name="mapt" Mode="In" Type="String" />
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="ngaythu" Mode="In" Type="DateTime" />
+            <Parameter Name="tienthu" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePhieuThuTien">
+            <Parameter Name="mapt" Mode="In" Type="String" />
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="ngaythu" Mode="In" Type="DateTime" />
+            <Parameter Name="tienthu" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -766,6 +804,18 @@
           <Property Type="String" Name="DienThoai" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="TienNo" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="GetAllPhieuThuTien_Result">
+          <Property Type="String" Name="MaPT" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="MaKH" Nullable="true" MaxLength="6" />
+          <Property Type="DateTime" Name="NgayThuTien" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="TienThu" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="GetPhieuThuTien_Result">
+          <Property Type="String" Name="MaPT" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="MaKH" Nullable="true" MaxLength="6" />
+          <Property Type="DateTime" Name="NgayThuTien" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="TienThu" Nullable="true" Precision="19" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -974,6 +1024,29 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeletePhieuThuTien" FunctionName="QLNHASACHModel.Store.DeletePhieuThuTien" />
+          <FunctionImportMapping FunctionImportName="GetAllPhieuThuTien" FunctionName="QLNHASACHModel.Store.GetAllPhieuThuTien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetAllPhieuThuTien_Result">
+                <ScalarProperty Name="MaPT" ColumnName="MaPT" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="NgayThuTien" ColumnName="NgayThuTien" />
+                <ScalarProperty Name="TienThu" ColumnName="TienThu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPhieuThuTien" FunctionName="QLNHASACHModel.Store.GetPhieuThuTien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetPhieuThuTien_Result">
+                <ScalarProperty Name="MaPT" ColumnName="MaPT" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="NgayThuTien" ColumnName="NgayThuTien" />
+                <ScalarProperty Name="TienThu" ColumnName="TienThu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertPhieuThuTien" FunctionName="QLNHASACHModel.Store.InsertPhieuThuTien" />
+          <FunctionImportMapping FunctionImportName="UpdatePhieuThuTien" FunctionName="QLNHASACHModel.Store.UpdatePhieuThuTien" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
