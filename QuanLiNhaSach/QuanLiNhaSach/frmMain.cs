@@ -24,6 +24,8 @@ namespace QuanLiNhaSach
             login.ShowDialog();
             if (login.DialogResult != DialogResult.OK)
                 this.Close();
+
+            lapphieusubpanel.Visible = false;
         }
 
         private Form activeform = null;
@@ -50,7 +52,7 @@ namespace QuanLiNhaSach
 
         private void lapphieubutton_Click(object sender, EventArgs e)
         {
-            OpenForm(new frmLapPhieuNhap());
+            lapphieusubpanel.Visible = !lapphieusubpanel.Visible;
         }
 
         private void quanlibutton_Click(object sender, EventArgs e)
@@ -68,5 +70,51 @@ namespace QuanLiNhaSach
             OpenForm(new frmQuyDinh());
         }
 
+        private void Menupanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            OpenForm(new frmTracuu());
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            OpenForm(new frmLapPhieuNhap());
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            OpenForm(new frmLapHoaDon());
+
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            OpenForm(new frmLapPhieuThu());
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
