@@ -446,3 +446,38 @@ go
 -- Cap nhat lan 4
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
+
+-- get user by username and password
+CREATE PROCEDURE GetUserBy
+@username varchar(20), @password varchar(8)
+AS
+BEGIN
+	SELECT * FROM Users
+	WHERE Username = @username AND Password = @password
+END
+GO
+
+-- get all user name
+CREATE PROCEDURE GetAllUsername
+AS
+BEGIN
+	SELECT Username FROM Users
+END
+GO
+
+CREATE PROCEDURE GetAllUID
+AS
+BEGIN
+	SELECT Id FROM Users
+END
+GO
+
+-- insert user
+CREATE PROCEDURE InsertUser
+@id varchar(6), @username varchar(20), @password varchar(8), @quyenhan int
+AS
+BEGIN
+	INSERT INTO Users(Id, Username, Password, QuyenHan)
+	VALUES (@id, @username, @password, @quyenhan)
+END
+GO

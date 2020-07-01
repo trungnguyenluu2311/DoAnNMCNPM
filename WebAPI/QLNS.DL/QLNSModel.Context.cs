@@ -300,5 +300,49 @@ namespace QLNS.DL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePhieuThuTien", maptParameter, makhParameter, ngaythuParameter, tienthuParameter);
         }
+    
+        public virtual ObjectResult<string> GetAllUsername()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllUsername");
+        }
+    
+        public virtual ObjectResult<GetUserBy_Result> GetUserBy(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserBy_Result>("GetUserBy", usernameParameter, passwordParameter);
+        }
+    
+        public virtual int InsertUser(string id, string username, string password, Nullable<int> quyenhan)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var quyenhanParameter = quyenhan.HasValue ?
+                new ObjectParameter("quyenhan", quyenhan) :
+                new ObjectParameter("quyenhan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUser", idParameter, usernameParameter, passwordParameter, quyenhanParameter);
+        }
+    
+        public virtual ObjectResult<string> GetAllUID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllUID");
+        }
     }
 }

@@ -1,39 +1,36 @@
-﻿using System;
+﻿using QLNS.DL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using QLNS.BL;
 
 namespace WebAPI.Controllers
 {
     public class UserController : ApiController
     {
-        // GET: api/User
-        public IEnumerable<string> Get()
+        // GET: api/User/checkuser/username={username};password={password}
+        [Route("api/User/checkuser/username={username};password={password}")]
+        [HttpGet]
+        public bool Get(string username, string password)
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/User/5
-        public string Get(int id)
-        {
-            return "value";
+            UserBL bl = new UserBL();
+            return bl.CheckUser(username, password);
         }
 
         // POST: api/User
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]Models.User value)
         {
-        }
+            UserBL bl = new UserBL();
 
-        // PUT: api/User/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+            User user = new User();
+            user.Username = value.Username;
+            user.Password = value.Password;
+            user.QuyenHan = value.QuyenHan;
 
-        // DELETE: api/User/5
-        public void Delete(int id)
-        {
+            return bl.Insert(user);
         }
     }
 }

@@ -252,6 +252,8 @@
         <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
         </Function>
@@ -274,6 +276,10 @@
           <Parameter Name="theloai" Type="nvarchar" Mode="In" />
           <Parameter Name="tacgia" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetUserBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="InsertKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
           <Parameter Name="tenkh" Type="varchar" Mode="In" />
@@ -294,6 +300,12 @@
           <Parameter Name="tacgia" Type="nvarchar" Mode="In" />
           <Parameter Name="dongia" Type="money" Mode="In" />
           <Parameter Name="soluong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="quyenhan" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdateKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
@@ -738,11 +750,11 @@
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeletePhieuThuTien">
-            <Parameter Name="mapt" Mode="In" Type="String" />
+          <Parameter Name="mapt" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAllPhieuThuTien" ReturnType="Collection(QLNHASACHModel.GetAllPhieuThuTien_Result)" />
           <FunctionImport Name="GetPhieuThuTien" ReturnType="Collection(QLNHASACHModel.GetPhieuThuTien_Result)">
-            <Parameter Name="mapt" Mode="In" Type="String" />
+          <Parameter Name="mapt" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertPhieuThuTien">
             <Parameter Name="mapt" Mode="In" Type="String" />
@@ -756,6 +768,18 @@
             <Parameter Name="ngaythu" Mode="In" Type="DateTime" />
             <Parameter Name="tienthu" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="GetAllUsername" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetUserBy" ReturnType="Collection(QLNHASACHModel.GetUserBy_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUser">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="quyenhan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllUID" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -816,6 +840,12 @@
           <Property Type="String" Name="MaKH" Nullable="true" MaxLength="6" />
           <Property Type="DateTime" Name="NgayThuTien" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="TienThu" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="GetUserBy_Result">
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="8" />
+          <Property Type="Int32" Name="QuyenHan" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1047,6 +1077,19 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertPhieuThuTien" FunctionName="QLNHASACHModel.Store.InsertPhieuThuTien" />
           <FunctionImportMapping FunctionImportName="UpdatePhieuThuTien" FunctionName="QLNHASACHModel.Store.UpdatePhieuThuTien" />
+          <FunctionImportMapping FunctionImportName="GetAllUsername" FunctionName="QLNHASACHModel.Store.GetAllUsername" />
+          <FunctionImportMapping FunctionImportName="GetUserBy" FunctionName="QLNHASACHModel.Store.GetUserBy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLNHASACHModel.GetUserBy_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="QuyenHan" ColumnName="QuyenHan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="QLNHASACHModel.Store.InsertUser" />
+          <FunctionImportMapping FunctionImportName="GetAllUID" FunctionName="QLNHASACHModel.Store.GetAllUID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
