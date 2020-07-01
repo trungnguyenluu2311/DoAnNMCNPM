@@ -176,6 +176,7 @@
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\PhieuThuTien.cs" />
     <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

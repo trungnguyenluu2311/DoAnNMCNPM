@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         // GET: api/Sach/id={id};ten={tensach};theloai={theloai};tacgia={tacgia}
         [Route("api/Sach/id={id};ten={tensach};theloai={theloai};tacgia={tacgia}")]
         [HttpGet]
-        public List<GetSachBy_Result> Get(string id = "", string tensach = "", string theloai = "", string tacgia = "")
+        public List<GetSachBy_Result> Get(string id, string tensach, string theloai, string tacgia)
 		{
 			SachBL bl = new SachBL();
 			return bl.GetBy(id, tensach, theloai, tacgia);

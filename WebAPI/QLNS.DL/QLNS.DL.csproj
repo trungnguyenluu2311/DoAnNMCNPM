@@ -89,6 +89,9 @@
     <Compile Include="GetSach_Result.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetUserBy_Result.cs">
+      <DependentUpon>QLNSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="HoaDon.cs">
       <DependentUpon>QLNSModel.tt</DependentUpon>
     </Compile>
