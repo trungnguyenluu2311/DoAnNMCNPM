@@ -259,7 +259,7 @@ namespace QLNS.DL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPhieuThuTien_Result>("GetPhieuThuTien", maptParameter);
         }
     
-        public virtual int InsertPhieuThuTien(string mapt, string makh, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
+        public virtual int InsertPhieuThuTien(string mapt, string makh, string tenkh, string diachi, string sdt, string email, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
         {
             var maptParameter = mapt != null ?
                 new ObjectParameter("mapt", mapt) :
@@ -269,6 +269,22 @@ namespace QLNS.DL
                 new ObjectParameter("makh", makh) :
                 new ObjectParameter("makh", typeof(string));
     
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
             var ngaythuParameter = ngaythu.HasValue ?
                 new ObjectParameter("ngaythu", ngaythu) :
                 new ObjectParameter("ngaythu", typeof(System.DateTime));
@@ -277,10 +293,10 @@ namespace QLNS.DL
                 new ObjectParameter("tienthu", tienthu) :
                 new ObjectParameter("tienthu", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPhieuThuTien", maptParameter, makhParameter, ngaythuParameter, tienthuParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPhieuThuTien", maptParameter, makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter, ngaythuParameter, tienthuParameter);
         }
     
-        public virtual int UpdatePhieuThuTien(string mapt, string makh, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
+        public virtual int UpdatePhieuThuTien(string mapt, string makh, string tenkh, string diachi, string sdt, string email, Nullable<System.DateTime> ngaythu, Nullable<decimal> tienthu)
         {
             var maptParameter = mapt != null ?
                 new ObjectParameter("mapt", mapt) :
@@ -290,6 +306,22 @@ namespace QLNS.DL
                 new ObjectParameter("makh", makh) :
                 new ObjectParameter("makh", typeof(string));
     
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
             var ngaythuParameter = ngaythu.HasValue ?
                 new ObjectParameter("ngaythu", ngaythu) :
                 new ObjectParameter("ngaythu", typeof(System.DateTime));
@@ -298,7 +330,7 @@ namespace QLNS.DL
                 new ObjectParameter("tienthu", tienthu) :
                 new ObjectParameter("tienthu", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePhieuThuTien", maptParameter, makhParameter, ngaythuParameter, tienthuParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePhieuThuTien", maptParameter, makhParameter, tenkhParameter, diachiParameter, sdtParameter, emailParameter, ngaythuParameter, tienthuParameter);
         }
     
         public virtual ObjectResult<string> GetAllUsername()
@@ -343,6 +375,16 @@ namespace QLNS.DL
         public virtual ObjectResult<string> GetAllUID()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllUID");
+        }
+    
+        public virtual ObjectResult<string> GetAllMaKhachHang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaKhachHang");
+        }
+    
+        public virtual ObjectResult<string> GetAllMaPhieuThu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaPhieuThu");
         }
     }
 }

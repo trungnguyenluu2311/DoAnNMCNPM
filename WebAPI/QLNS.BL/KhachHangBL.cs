@@ -26,6 +26,16 @@ namespace QLNS.BL
 			}
 		}
 
+		public List<string> GetALLMaKH()
+		{
+			using (QLNHASACHEntities entities = new QLNHASACHEntities())
+			{
+				var list = entities.GetAllMaKhachHang().ToList();
+				list.Insert(0, "Không");
+				return list;
+			}
+		}
+
 		public List<GetKhachHangBy_Result> GetBy(string makh, string tenkh, string diachi, string sdt, string email)
 		{
 			using (QLNHASACHEntities entities = new QLNHASACHEntities())
