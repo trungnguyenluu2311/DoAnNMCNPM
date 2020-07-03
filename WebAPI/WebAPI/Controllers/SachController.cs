@@ -25,6 +25,15 @@ namespace WebAPI.Controllers
             return bl.Get(id);
         }
 
+        // GET: api/sach/getallmasach
+        [Route("api/Sach/getallmasach")]
+        [HttpGet]
+        public List<string> GetAllMS()
+        {
+            SachBL bl = new SachBL();
+            return bl.GetAllMaSach();
+        }
+
         // GET: api/Sach/id={id};ten={tensach};theloai={theloai};tacgia={tacgia}
         [Route("api/Sach/id={id};ten={tensach};theloai={theloai};tacgia={tacgia}")]
         [HttpGet]

@@ -28,6 +28,15 @@ namespace QLNS.BL
 			}
 		}
 
+		public List<string> GetAllMaSach()
+		{
+			using (QLNHASACHEntities entities = new QLNHASACHEntities())
+			{
+				var list = entities.GetAllMaSach().ToList();
+				list.Insert(0,"Không");
+				return list;
+			}
+		}
 
 		public List<GetSachBy_Result> GetBy(string id, string tensach, string theloai, string tacgia)
 		{

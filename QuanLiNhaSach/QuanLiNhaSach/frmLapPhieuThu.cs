@@ -125,7 +125,12 @@ namespace QuanLiNhaSach
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if ((sender as ComboBox).Text == "Không") return;
+			if ((sender as ComboBox).Text == "Không")
+			{
+				textBox1.ReadOnly = textBox2.ReadOnly = textBox4.ReadOnly = textBox5.ReadOnly = false;
+				return;
+			}
+			textBox1.ReadOnly = textBox2.ReadOnly = textBox4.ReadOnly = textBox5.ReadOnly = true;
 			AutoFillInfo();
 		}
 

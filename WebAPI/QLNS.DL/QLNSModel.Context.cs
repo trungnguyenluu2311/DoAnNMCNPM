@@ -386,5 +386,57 @@ namespace QLNS.DL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaPhieuThu");
         }
+    
+        public virtual ObjectResult<string> GetAllMaHoaDon()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaHoaDon");
+        }
+    
+        public virtual int InsertCTHD(string mahd, string masach, Nullable<int> soluong, Nullable<decimal> dongia)
+        {
+            var mahdParameter = mahd != null ?
+                new ObjectParameter("mahd", mahd) :
+                new ObjectParameter("mahd", typeof(string));
+    
+            var masachParameter = masach != null ?
+                new ObjectParameter("masach", masach) :
+                new ObjectParameter("masach", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var dongiaParameter = dongia.HasValue ?
+                new ObjectParameter("dongia", dongia) :
+                new ObjectParameter("dongia", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertCTHD", mahdParameter, masachParameter, soluongParameter, dongiaParameter);
+        }
+    
+        public virtual int InsertHoaDon(string mahd, string makh, Nullable<System.DateTime> ngaylap, Nullable<decimal> thanhtien)
+        {
+            var mahdParameter = mahd != null ?
+                new ObjectParameter("mahd", mahd) :
+                new ObjectParameter("mahd", typeof(string));
+    
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var ngaylapParameter = ngaylap.HasValue ?
+                new ObjectParameter("ngaylap", ngaylap) :
+                new ObjectParameter("ngaylap", typeof(System.DateTime));
+    
+            var thanhtienParameter = thanhtien.HasValue ?
+                new ObjectParameter("thanhtien", thanhtien) :
+                new ObjectParameter("thanhtien", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertHoaDon", mahdParameter, makhParameter, ngaylapParameter, thanhtienParameter);
+        }
+    
+        public virtual ObjectResult<string> GetAllMaSach()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaSach");
+        }
     }
 }

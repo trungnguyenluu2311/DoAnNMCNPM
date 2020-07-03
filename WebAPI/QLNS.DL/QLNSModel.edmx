@@ -242,8 +242,10 @@
           <Parameter Name="masach" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -273,6 +275,18 @@
         <Function Name="GetUserBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahd" Type="varchar" Mode="In" />
+          <Parameter Name="masach" Type="varchar" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="dongia" Type="money" Mode="In" />
+        </Function>
+        <Function Name="InsertHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahd" Type="varchar" Mode="In" />
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="ngaylap" Type="datetime" Mode="In" />
+          <Parameter Name="thanhtien" Type="money" Mode="In" />
         </Function>
         <Function Name="InsertKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
@@ -792,6 +806,20 @@
           <FunctionImport Name="GetAllUID" ReturnType="Collection(String)" />
           <FunctionImport Name="GetAllMaKhachHang" ReturnType="Collection(String)" />
           <FunctionImport Name="GetAllMaPhieuThu" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetAllMaHoaDon" ReturnType="Collection(String)" />
+          <FunctionImport Name="InsertCTHD">
+            <Parameter Name="mahd" Mode="In" Type="String" />
+            <Parameter Name="masach" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="dongia" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertHoaDon">
+            <Parameter Name="mahd" Mode="In" Type="String" />
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="ngaylap" Mode="In" Type="DateTime" />
+            <Parameter Name="thanhtien" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllMaSach" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -1108,6 +1136,10 @@
           <FunctionImportMapping FunctionImportName="GetAllUID" FunctionName="QLNHASACHModel.Store.GetAllUID" />
           <FunctionImportMapping FunctionImportName="GetAllMaKhachHang" FunctionName="QLNHASACHModel.Store.GetAllMaKhachHang" />
           <FunctionImportMapping FunctionImportName="GetAllMaPhieuThu" FunctionName="QLNHASACHModel.Store.GetAllMaPhieuThu" />
+          <FunctionImportMapping FunctionImportName="GetAllMaHoaDon" FunctionName="QLNHASACHModel.Store.GetAllMaHoaDon" />
+          <FunctionImportMapping FunctionImportName="InsertCTHD" FunctionName="QLNHASACHModel.Store.InsertCTHD" />
+          <FunctionImportMapping FunctionImportName="InsertHoaDon" FunctionName="QLNHASACHModel.Store.InsertHoaDon" />
+          <FunctionImportMapping FunctionImportName="GetAllMaSach" FunctionName="QLNHASACHModel.Store.GetAllMaSach" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

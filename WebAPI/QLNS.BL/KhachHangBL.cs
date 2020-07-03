@@ -67,5 +67,21 @@ namespace QLNS.BL
 				entities.DeleteKhachHang(id);
 			}
 		}
+
+		public string KHIdGenerator(List<string> khids)
+		{
+			string id = "KH";
+			Random r = new Random();
+			do
+			{
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+			}
+			while (khids.BinarySearch(id) >= 0);
+
+			return id;
+		}
 	}
 }

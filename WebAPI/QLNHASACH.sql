@@ -545,3 +545,44 @@ BEGIN
 	SELECT MaPT FROM PhieuThuTien
 END
 GO
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 6
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+-- get all ma hoa don
+CREATE PROCEDURE GetAllMaHoaDon
+AS
+BEGIN
+	SELECT MaHD FROM HoaDon
+END
+GO
+
+-- insert hoa don
+CREATE PROCEDURE InsertHoaDon
+@mahd varchar(6), @makh varchar(6), @ngaylap datetime, @thanhtien money
+AS
+BEGIN
+	INSERT INTO HoaDon(MaHD, MaKH, NgayLap, ThanhTien)
+	VALUES (@mahd, @makh, @ngaylap, @thanhtien)
+END
+GO
+
+-- insert cthd
+CREATE PROCEDURE InsertCTHD
+@mahd varchar(6), @masach varchar(6), @soluong int, @dongia money
+AS
+BEGIN
+	INSERT INTO CTHD(MaHD, MaSach, SoLuongBan, DonGiaBan)
+	VALUES (@mahd, @masach, @soluong, @dongia)
+END
+GO
+
+CREATE PROCEDURE GetAllMaSach
+AS
+BEGIN
+	SELECT MaSach FROM Sach
+END
+GO
