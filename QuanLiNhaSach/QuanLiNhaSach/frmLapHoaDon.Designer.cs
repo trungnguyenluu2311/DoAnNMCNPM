@@ -43,8 +43,6 @@
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
@@ -117,8 +115,6 @@
 			this.panel2.Controls.Add(this.textBox1);
 			this.panel2.Controls.Add(this.textBox5);
 			this.panel2.Controls.Add(this.dataGridView1);
-			this.panel2.Controls.Add(this.label12);
-			this.panel2.Controls.Add(this.label11);
 			this.panel2.Controls.Add(this.label14);
 			this.panel2.Controls.Add(this.label13);
 			this.panel2.Controls.Add(this.label10);
@@ -242,26 +238,6 @@
 			this.Column5.HeaderText = "Đơn giá";
 			this.Column5.MinimumWidth = 6;
 			this.Column5.Name = "Column5";
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label12.Location = new System.Drawing.Point(50, 14);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(137, 24);
-			this.label12.TabIndex = 1;
-			this.label12.Text = "Mã khách hàng";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label11.Location = new System.Drawing.Point(625, 43);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(81, 24);
-			this.label11.TabIndex = 1;
-			this.label11.Text = "Tên sách";
 			// 
 			// label14
 			// 
@@ -548,8 +524,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.Label dgvMaKhachHang;
-		private System.Windows.Forms.Label dgvTenSach;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label10;
@@ -563,7 +537,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button btnThem;
+		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.TextBox textBox6;
