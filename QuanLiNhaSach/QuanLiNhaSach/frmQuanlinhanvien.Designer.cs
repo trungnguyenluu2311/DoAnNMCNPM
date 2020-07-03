@@ -174,6 +174,7 @@
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.Size = new System.Drawing.Size(142, 24);
             this.txtGioiTinh.TabIndex = 13;
+            this.txtGioiTinh.TextChanged += new System.EventHandler(this.txtGioiTinh_TextChanged);
             // 
             // panel3
             // 
@@ -264,6 +265,7 @@
             this.dpkNgaySinh.Name = "dpkNgaySinh";
             this.dpkNgaySinh.Size = new System.Drawing.Size(142, 23);
             this.dpkNgaySinh.TabIndex = 12;
+            this.dpkNgaySinh.ValueChanged += new System.EventHandler(this.dpkNgaySinh_ValueChanged);
             // 
             // txtDiaChi
             // 
