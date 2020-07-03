@@ -539,7 +539,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.ResumeLayout(false);
-
+        
 		}
 
 		#endregion
@@ -548,8 +548,8 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label dgvMaKhachHang;
+		private System.Windows.Forms.Label dgvTenSach;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label10;
@@ -563,7 +563,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button btnThem;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.TextBox textBox6;

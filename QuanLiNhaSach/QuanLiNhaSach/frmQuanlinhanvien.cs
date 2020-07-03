@@ -162,5 +162,15 @@ namespace QuanLiNhaSach
                 dataGridNV.RefreshEdit();
             }
         }
+
+        private void txtGioiTinh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpkNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
