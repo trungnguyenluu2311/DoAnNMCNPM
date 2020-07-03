@@ -26,6 +26,15 @@ namespace WebAPI.Controllers
             return bl.Get(id);
         }
 
+        // GET: api/KhachHang/getallmakh
+        [Route("api/KhachHang/getallmakh")]
+        [HttpGet]
+        public List<string> GetAllMaKH()
+        {
+            KhachHangBL bl = new KhachHangBL();
+            return bl.GetALLMaKH();
+        }
+
         // GET: api/KhachHang/id={makh};ten={tenkh};diachi={diachi};sdt={sdt};email={email}
         [Route("api/KhachHang/id={makh};ten={tenkh};diachi={diachi};sdt={sdt};email={email}")]
         [HttpGet]

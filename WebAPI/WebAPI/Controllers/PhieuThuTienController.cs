@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.Web.Infrastructure.DynamicValidationHelper;
 using QLNS.BL;
 using QLNS.DL;
 
@@ -26,17 +27,21 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/PhieuThuTien
-        public void Post([FromBody]Models.PhieuThuTien value)
+        public bool Post([FromBody]Models.PhieuThuTien value)
         {
             PhieuThuTienBL bl = new PhieuThuTienBL();
 
             PhieuThuTien phieu = new PhieuThuTien();
             phieu.MaPT = value.MaPT;
             phieu.MaKH = value.MaKH;
+            phieu.TenKH = value.TenKH;
+            phieu.DiaChi = value.DiaChi;
+            phieu.DienThoai = value.DienThoai;
+            phieu.Email = value.Email;
             phieu.NgayThuTien = value.NgayThuTien;
             phieu.TienThu = value.TienThu;
 
-            bl.Insert(phieu);
+            return bl.Insert(phieu);
         }
 
         // PUT: api/PhieuThuTien/5
@@ -47,6 +52,10 @@ namespace WebAPI.Controllers
             PhieuThuTien phieu = new PhieuThuTien();
             phieu.MaPT = value.MaPT;
             phieu.MaKH = value.MaKH;
+            phieu.TenKH = value.TenKH;
+            phieu.DiaChi = value.DiaChi;
+            phieu.DienThoai = value.DienThoai;
+            phieu.Email = value.Email;
             phieu.NgayThuTien = value.NgayThuTien;
             phieu.TienThu = value.TienThu;
 

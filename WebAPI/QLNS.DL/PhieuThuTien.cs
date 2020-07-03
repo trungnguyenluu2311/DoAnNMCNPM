@@ -18,6 +18,10 @@ namespace QLNS.DL
         public string MaKH { get; set; }
         public Nullable<System.DateTime> NgayThuTien { get; set; }
         public Nullable<decimal> TienThu { get; set; }
+        public string TenKH { get; set; }
+        public string DiaChi { get; set; }
+        public string DienThoai { get; set; }
+        public string Email { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
     }

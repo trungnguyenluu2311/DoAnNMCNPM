@@ -87,6 +87,10 @@
           </Key>
           <Property Name="MaPT" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="MaKH" Type="varchar" MaxLength="6" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="40" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="60" />
+          <Property Name="DienThoai" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
           <Property Name="NgayThuTien" Type="datetime" />
           <Property Name="TienThu" Type="money" />
         </EntityType>
@@ -228,18 +232,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuThuTi__MaKH__656C112C">
-          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
-          <End Role="PhieuThuTien" Type="Self.PhieuThuTien" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="PhieuThuTien">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="DeleteKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
         </Function>
@@ -250,6 +242,10 @@
           <Parameter Name="masach" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -280,6 +276,18 @@
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="InsertCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahd" Type="varchar" Mode="In" />
+          <Parameter Name="masach" Type="varchar" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="dongia" Type="money" Mode="In" />
+        </Function>
+        <Function Name="InsertHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahd" Type="varchar" Mode="In" />
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="ngaylap" Type="datetime" Mode="In" />
+          <Parameter Name="thanhtien" Type="money" Mode="In" />
+        </Function>
         <Function Name="InsertKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="varchar" Mode="In" />
           <Parameter Name="tenkh" Type="varchar" Mode="In" />
@@ -290,6 +298,10 @@
         <Function Name="InsertPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapt" Type="varchar" Mode="In" />
           <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="varchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
           <Parameter Name="ngaythu" Type="datetime" Mode="In" />
           <Parameter Name="tienthu" Type="money" Mode="In" />
         </Function>
@@ -317,6 +329,10 @@
         <Function Name="UpdatePhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapt" Type="varchar" Mode="In" />
           <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="varchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
           <Parameter Name="ngaythu" Type="datetime" Mode="In" />
           <Parameter Name="tienthu" Type="money" Mode="In" />
         </Function>
@@ -375,10 +391,6 @@
           <AssociationSet Name="FK__HoaDon__MaKH__4E88ABD4" Association="Self.FK__HoaDon__MaKH__4E88ABD4">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PhieuThuTi__MaKH__656C112C" Association="Self.FK__PhieuThuTi__MaKH__656C112C">
-            <End Role="KhachHang" EntitySet="KhachHang" />
-            <End Role="PhieuThuTien" EntitySet="PhieuThuTien" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -486,6 +498,10 @@
           <Property Name="NgayThuTien" Type="DateTime" Precision="3" />
           <Property Name="TienThu" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__PhieuThuTi__MaKH__656C112C" FromRole="PhieuThuTien" ToRole="KhachHang" />
+          <Property Name="TenKH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -759,12 +775,20 @@
           <FunctionImport Name="InsertPhieuThuTien">
             <Parameter Name="mapt" Mode="In" Type="String" />
             <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
             <Parameter Name="ngaythu" Mode="In" Type="DateTime" />
             <Parameter Name="tienthu" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="UpdatePhieuThuTien">
             <Parameter Name="mapt" Mode="In" Type="String" />
             <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
             <Parameter Name="ngaythu" Mode="In" Type="DateTime" />
             <Parameter Name="tienthu" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -780,6 +804,22 @@
             <Parameter Name="quyenhan" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllUID" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetAllMaKhachHang" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetAllMaPhieuThu" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetAllMaHoaDon" ReturnType="Collection(String)" />
+          <FunctionImport Name="InsertCTHD">
+            <Parameter Name="mahd" Mode="In" Type="String" />
+            <Parameter Name="masach" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="dongia" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertHoaDon">
+            <Parameter Name="mahd" Mode="In" Type="String" />
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="ngaylap" Mode="In" Type="DateTime" />
+            <Parameter Name="thanhtien" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllMaSach" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -936,6 +976,10 @@
           <EntitySetMapping Name="PhieuThuTiens">
             <EntityTypeMapping TypeName="QLNHASACHModel.PhieuThuTien">
               <MappingFragment StoreEntitySet="PhieuThuTien">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
                 <ScalarProperty Name="MaPT" ColumnName="MaPT" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="NgayThuTien" ColumnName="NgayThuTien" />
@@ -1090,6 +1134,12 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="QLNHASACHModel.Store.InsertUser" />
           <FunctionImportMapping FunctionImportName="GetAllUID" FunctionName="QLNHASACHModel.Store.GetAllUID" />
+          <FunctionImportMapping FunctionImportName="GetAllMaKhachHang" FunctionName="QLNHASACHModel.Store.GetAllMaKhachHang" />
+          <FunctionImportMapping FunctionImportName="GetAllMaPhieuThu" FunctionName="QLNHASACHModel.Store.GetAllMaPhieuThu" />
+          <FunctionImportMapping FunctionImportName="GetAllMaHoaDon" FunctionName="QLNHASACHModel.Store.GetAllMaHoaDon" />
+          <FunctionImportMapping FunctionImportName="InsertCTHD" FunctionName="QLNHASACHModel.Store.InsertCTHD" />
+          <FunctionImportMapping FunctionImportName="InsertHoaDon" FunctionName="QLNHASACHModel.Store.InsertHoaDon" />
+          <FunctionImportMapping FunctionImportName="GetAllMaSach" FunctionName="QLNHASACHModel.Store.GetAllMaSach" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

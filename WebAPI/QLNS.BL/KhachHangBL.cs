@@ -26,6 +26,16 @@ namespace QLNS.BL
 			}
 		}
 
+		public List<string> GetALLMaKH()
+		{
+			using (QLNHASACHEntities entities = new QLNHASACHEntities())
+			{
+				var list = entities.GetAllMaKhachHang().ToList();
+				list.Insert(0, "Không");
+				return list;
+			}
+		}
+
 		public List<GetKhachHangBy_Result> GetBy(string makh, string tenkh, string diachi, string sdt, string email)
 		{
 			using (QLNHASACHEntities entities = new QLNHASACHEntities())
@@ -56,6 +66,22 @@ namespace QLNS.BL
 			{
 				entities.DeleteKhachHang(id);
 			}
+		}
+
+		public string KHIdGenerator(List<string> khids)
+		{
+			string id = "KH";
+			Random r = new Random();
+			do
+			{
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+			}
+			while (khids.BinarySearch(id) >= 0);
+
+			return id;
 		}
 	}
 }

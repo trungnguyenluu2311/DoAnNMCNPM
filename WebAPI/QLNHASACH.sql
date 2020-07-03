@@ -481,3 +481,108 @@ BEGIN
 	VALUES (@id, @username, @password, @quyenhan)
 END
 GO
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 5
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+-- get all ma khach hang
+CREATE PROCEDURE GetAllMaKhachHang
+AS
+BEGIN
+	SELECT MaKH FROM KhachHang
+END
+GO
+
+DROP TABLE PhieuThuTien
+GO
+
+CREATE TABLE PhieuThuTien
+(
+	MaPT varchar(6) PRIMARY KEY,
+	MaKH varchar(6),
+	TenKH nvarchar(40),
+	DiaChi nvarchar(60),
+	DienThoai varchar(10),
+	Email varchar(20),
+	NgayThuTien datetime,
+	TienThu money,
+)
+GO
+
+INSERT INTO PhieuThuTien VALUES('PT0001','KH0002','Khach hang 2','TP.HCM','0123456789','abc@zxy.cc','9-2-2019','10500')
+INSERT INTO PhieuThuTien VALUES('PT0002','KH0001','Khach hang 1','Ha Noi','0125874963','qwe@uio.cc','12-26-2019','45000')
+INSERT INTO PhieuThuTien VALUES('PT0003','Khong','Khach hang 69','Binh Duong','0123456789','zxy@asd.qwe','2-15-2020','6000')
+SELECT * FROM PhieuThuTien
+GO
+
+-- insert phieu thu tien
+alter procedure InsertPhieuThuTien
+@mapt varchar(6), @makh varchar(6),@tenkh varchar(40), @diachi varchar(60), @sdt varchar(10), @email varchar(20), @ngaythu datetime, @tienthu money
+as
+begin
+	insert into PhieuThuTien(MaPT, MaKH,TenKH, DiaChi, DienThoai, Email, NgayThuTien, TienThu)
+	values (@mapt, @makh, @tenkh, @diachi, @sdt, @email, @ngaythu, @tienthu)
+end
+go
+
+-- update pheiu thu tien
+alter procedure UpdatePhieuThuTien
+@mapt varchar(6), @makh varchar(6),@tenkh varchar(40), @diachi varchar(60), @sdt varchar(10), @email varchar(20), @ngaythu datetime, @tienthu money
+as
+begin
+	update PhieuThuTien
+	set MaKH = @makh, TenKH = @tenkh, DiaChi = @diachi, DienThoai = @sdt, Email = @email, NgayThuTien = @ngaythu, TienThu = @tienthu
+	where MaPT = @mapt
+end
+go
+
+CREATE PROCEDURE GetAllMaPhieuThu
+AS
+BEGIN
+	SELECT MaPT FROM PhieuThuTien
+END
+GO
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 6
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+-- get all ma hoa don
+CREATE PROCEDURE GetAllMaHoaDon
+AS
+BEGIN
+	SELECT MaHD FROM HoaDon
+END
+GO
+
+-- insert hoa don
+CREATE PROCEDURE InsertHoaDon
+@mahd varchar(6), @makh varchar(6), @ngaylap datetime, @thanhtien money
+AS
+BEGIN
+	INSERT INTO HoaDon(MaHD, MaKH, NgayLap, ThanhTien)
+	VALUES (@mahd, @makh, @ngaylap, @thanhtien)
+END
+GO
+
+-- insert cthd
+CREATE PROCEDURE InsertCTHD
+@mahd varchar(6), @masach varchar(6), @soluong int, @dongia money
+AS
+BEGIN
+	INSERT INTO CTHD(MaHD, MaSach, SoLuongBan, DonGiaBan)
+	VALUES (@mahd, @masach, @soluong, @dongia)
+END
+GO
+
+CREATE PROCEDURE GetAllMaSach
+AS
+BEGIN
+	SELECT MaSach FROM Sach
+END
+GO
