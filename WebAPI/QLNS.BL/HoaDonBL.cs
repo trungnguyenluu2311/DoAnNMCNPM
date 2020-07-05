@@ -25,7 +25,6 @@ namespace QLNS.BL
 					khbl.Insert(khachhang);
 				}
 
-
 				entities.InsertHoaDon(hoadon.MaHD, khachhang.MaKH, hoadon.NgayLap, hoadon.ThanhTien);
 
 				foreach (Sach s in saches)

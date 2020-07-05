@@ -27,6 +27,7 @@
         <AssociationConnector Association="QLNHASACHModel.FK__CTPNS__MaSach__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="QLNHASACHModel.FK__HoaDon__MaKH__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="QLNHASACHModel.FK__PhieuThuTi__MaKH__656C112C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLNHASACHModel.ThamSo" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

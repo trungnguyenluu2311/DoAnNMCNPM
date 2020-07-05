@@ -69,5 +69,21 @@ namespace QLNS.BL
 				entities.DeleteSach(id);
 			}
 		}
+
+		public string SIdGenerator(List<string> sids)
+		{
+			string id = "SA";
+			Random r = new Random();
+			do
+			{
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+			}
+			while (sids.BinarySearch(id) >= 0);
+
+			return id;
+		}
 	}
 }

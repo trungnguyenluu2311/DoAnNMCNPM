@@ -39,6 +39,7 @@ namespace QLNS.DL
         public virtual DbSet<Sach> Saches { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ThamSo> ThamSoes { get; set; }
     
         public virtual ObjectResult<GetAllSach_Result> GetAllSach()
         {
@@ -437,6 +438,45 @@ namespace QLNS.DL
         public virtual ObjectResult<string> GetAllMaSach()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaSach");
+        }
+    
+        public virtual ObjectResult<string> GetAllMaPhieuNhap()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllMaPhieuNhap");
+        }
+    
+        public virtual int InsertCTPNS(string mapn, string masach, Nullable<int> soluong, Nullable<decimal> dongia)
+        {
+            var mapnParameter = mapn != null ?
+                new ObjectParameter("mapn", mapn) :
+                new ObjectParameter("mapn", typeof(string));
+    
+            var masachParameter = masach != null ?
+                new ObjectParameter("masach", masach) :
+                new ObjectParameter("masach", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var dongiaParameter = dongia.HasValue ?
+                new ObjectParameter("dongia", dongia) :
+                new ObjectParameter("dongia", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertCTPNS", mapnParameter, masachParameter, soluongParameter, dongiaParameter);
+        }
+    
+        public virtual int InsertPhieuNhap(string mapn, Nullable<System.DateTime> ngaynhap)
+        {
+            var mapnParameter = mapn != null ?
+                new ObjectParameter("mapn", mapn) :
+                new ObjectParameter("mapn", typeof(string));
+    
+            var ngaynhapParameter = ngaynhap.HasValue ?
+                new ObjectParameter("ngaynhap", ngaynhap) :
+                new ObjectParameter("ngaynhap", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPhieuNhap", mapnParameter, ngaynhapParameter);
         }
     }
 }

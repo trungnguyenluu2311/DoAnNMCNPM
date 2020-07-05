@@ -586,3 +586,83 @@ BEGIN
 	SELECT MaSach FROM Sach
 END
 GO
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 7
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+-- get all ma phieu nhap
+CREATE PROCEDURE GetAllMaPhieuNhap
+AS
+BEGIN
+	SELECT MaPN FROM PhieuNhapSach
+END
+GO
+
+-- insert phieu nhap sach
+CREATE PROCEDURE InsertPhieuNhap
+@mapn varchar(6), @ngaynhap datetime
+AS
+BEGIN
+	INSERT INTO PhieuNhapSach(MaPN, NgayNhap)
+	VALUES (@mapn, @ngaynhap)
+END
+GO
+
+-- insert CTPN
+CREATE PROCEDURE InsertCTPNS
+@mapn varchar(6), @masach varchar(6), @soluong int, @dongia money
+AS
+BEGIN
+	INSERT INTO CTPNS(MaPN, MaSach, SoLuongNhap, DonGiaNhap)
+	VALUES (@mapn, @masach, @soluong, @dongia)
+END
+GO
+
+CREATE TABLE ThamSo
+(
+	MaThamSo varchar(6) PRIMARY KEY,
+	TenThamSo varchar(50),
+	GiaTri int
+)
+GO
+
+INSERT INTO ThamSo VALUES('TS0001','So luong nhap toi thieu','150')
+INSERT INTO ThamSo VALUES('TS0002','So luong ton toi da','300')
+INSERT INTO ThamSo VALUES('TS0003','Tien no toi da','20000')
+INSERT INTO ThamSo VALUES('TS0004','Luong ton toi thieu sau khi ban','20')
+INSERT INTO ThamSo VALUES('TS0005','Ti le don gia ban','105')
+SELECT * FROM ThamSo
+GO
+
+CREATE TRIGGER trigger_insert_cthd
+ON CTHD
+FOR INSERT
+AS
+BEGIN
+	Declare @soluongban int, @masach varchar(6)
+
+	SELECT @soluongban = SoLuongBan, @masach = MaSach FROM inserted
+
+	UPDATE Sach 
+	SET Sach.SoLuong = Sach.SoLuong - @soluongban
+	WHERE Sach.MaSach = @masach
+END
+GO
+
+CREATE TRIGGER trigger_insert_ctpns
+ON CTPNS
+FOR INSERT
+AS
+BEGIN
+	Declare @soluongnhap int, @masach varchar(6)
+
+	SELECT @soluongnhap = SoLuongNhap, @masach = MaSach FROM inserted
+
+	UPDATE Sach 
+	SET Sach.SoLuong = Sach.SoLuong + @soluongnhap
+	WHERE Sach.MaSach = @masach
+END
+GO

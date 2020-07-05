@@ -9,5 +9,6 @@ namespace WebAPI.Models
 	{
 		public string MaPN { get; set; }
 		public Nullable<System.DateTime> NgayNhap { get; set; }
+		public List<Sach> Saches { get; set; }
 	}
 }

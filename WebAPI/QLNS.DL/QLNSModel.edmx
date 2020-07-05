@@ -115,6 +115,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="ThamSo">
+          <Key>
+            <PropertyRef Name="MaThamSo" />
+          </Key>
+          <Property Name="MaThamSo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="TenThamSo" Type="varchar" MaxLength="50" />
+          <Property Name="GiaTri" Type="int" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -244,6 +252,7 @@
         <Function Name="GetAllKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMaPhieuNhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMaSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -282,6 +291,12 @@
           <Parameter Name="soluong" Type="int" Mode="In" />
           <Parameter Name="dongia" Type="money" Mode="In" />
         </Function>
+        <Function Name="InsertCTPNS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapn" Type="varchar" Mode="In" />
+          <Parameter Name="masach" Type="varchar" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="dongia" Type="money" Mode="In" />
+        </Function>
         <Function Name="InsertHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mahd" Type="varchar" Mode="In" />
           <Parameter Name="makh" Type="varchar" Mode="In" />
@@ -294,6 +309,10 @@
           <Parameter Name="diachi" Type="varchar" Mode="In" />
           <Parameter Name="sdt" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertPhieuNhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mapn" Type="varchar" Mode="In" />
+          <Parameter Name="ngaynhap" Type="datetime" Mode="In" />
         </Function>
         <Function Name="InsertPhieuThuTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapt" Type="varchar" Mode="In" />
@@ -355,6 +374,7 @@
           <EntitySet Name="PhieuThuTien" EntityType="Self.PhieuThuTien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThamSo" EntityType="Self.ThamSo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CTBCNOCONG__MaBC__5EBF139D" Association="Self.FK__CTBCNOCONG__MaBC__5EBF139D">
             <End Role="BaoCao" EntitySet="BaoCao" />
@@ -820,6 +840,18 @@
             <Parameter Name="thanhtien" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="GetAllMaSach" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetAllMaPhieuNhap" ReturnType="Collection(String)" />
+          <FunctionImport Name="InsertCTPNS">
+            <Parameter Name="mapn" Mode="In" Type="String" />
+            <Parameter Name="masach" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="dongia" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertPhieuNhap">
+            <Parameter Name="mapn" Mode="In" Type="String" />
+            <Parameter Name="ngaynhap" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="ThamSoes" EntityType="QLNHASACHModel.ThamSo" />
         </EntityContainer>
         <ComplexType Name="GetAllSach_Result">
           <Property Type="String" Name="MaSach" Nullable="false" MaxLength="6" />
@@ -887,6 +919,14 @@
           <Property Type="String" Name="Password" Nullable="true" MaxLength="8" />
           <Property Type="Int32" Name="QuyenHan" Nullable="true" />
         </ComplexType>
+        <EntityType Name="ThamSo">
+          <Key>
+            <PropertyRef Name="MaThamSo" />
+          </Key>
+          <Property Name="MaThamSo" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TenThamSo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GiaTri" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1140,6 +1180,18 @@
           <FunctionImportMapping FunctionImportName="InsertCTHD" FunctionName="QLNHASACHModel.Store.InsertCTHD" />
           <FunctionImportMapping FunctionImportName="InsertHoaDon" FunctionName="QLNHASACHModel.Store.InsertHoaDon" />
           <FunctionImportMapping FunctionImportName="GetAllMaSach" FunctionName="QLNHASACHModel.Store.GetAllMaSach" />
+          <FunctionImportMapping FunctionImportName="GetAllMaPhieuNhap" FunctionName="QLNHASACHModel.Store.GetAllMaPhieuNhap" />
+          <FunctionImportMapping FunctionImportName="InsertCTPNS" FunctionName="QLNHASACHModel.Store.InsertCTPNS" />
+          <FunctionImportMapping FunctionImportName="InsertPhieuNhap" FunctionName="QLNHASACHModel.Store.InsertPhieuNhap" />
+          <EntitySetMapping Name="ThamSoes">
+            <EntityTypeMapping TypeName="QLNHASACHModel.ThamSo">
+              <MappingFragment StoreEntitySet="ThamSo">
+                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
+                <ScalarProperty Name="TenThamSo" ColumnName="TenThamSo" />
+                <ScalarProperty Name="MaThamSo" ColumnName="MaThamSo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

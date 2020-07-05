@@ -9,11 +9,33 @@ namespace QLNS.BL
 {
 	public class PhieuNhapBL
 	{
-		public bool Insert(HoaDon hoadon, KhachHang khachhang, List<Sach> saches)
+		public bool Insert(PhieuNhapSach phieunhap, List<Sach> saches)
 		{
-			return false;
+			using (QLNHASACHEntities entities = new QLNHASACHEntities())
+			{
+				var pnids = entities.GetAllMaPhieuNhap().ToList();
+				phieunhap.MaPN = PNIdGenerator(pnids);
+
+				entities.InsertPhieuNhap(phieunhap.MaPN, phieunhap.NgayNhap);
+
+				foreach (Sach s in saches)
+				{
+					SachBL sbl = new SachBL();
+
+					if (s.MaSach == "Khong")
+					{
+						var sids = entities.GetAllMaSach().ToList();
+						s.MaSach = sbl.SIdGenerator(sids);
+						sbl.Insert(s);
+					}
+
+					entities.InsertCTPNS(phieunhap.MaPN, s.MaSach, s.SoLuong, s.DonGia);
+				}
+
+				return true;
+			}
 		}
-		private string HDIdGenerator(List<string> pnids)
+		private string PNIdGenerator(List<string> pnids)
 		{
 			string id = "PN";
 			Random r = new Random();
