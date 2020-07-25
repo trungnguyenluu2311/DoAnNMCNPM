@@ -666,3 +666,39 @@ BEGIN
 	WHERE Sach.MaSach = @masach
 END
 GO
+
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-- Cap nhat lan 8
+-------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+DROP PROCEDURE GetAllUsername
+DROP PROCEDURE GetAllUID
+DROP PROCEDURE GetAllMaKhachHang
+DROP PROCEDURE GetAllMaHoaDon
+DROP PROCEDURE GetAllMaPhieuNhap
+DROP PROCEDURE GetAllMaPhieuThu
+DROP PROCEDURE GetAllMaSach
+GO
+
+CREATE PROCEDURE GetAllUser
+AS
+BEGIN
+	SELECT * FROM Users
+END
+GO
+
+CREATE PROCEDURE GetAllHoaDon 
+AS
+BEGIN
+	SELECT * FROM HoaDon
+END
+GO
+
+CREATE PROCEDURE GetAllPhieuNhapSach
+AS
+BEGIN
+	SELECT * FROM PhieuNhapSach
+END
+GO

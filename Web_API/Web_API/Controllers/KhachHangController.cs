@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web_API.Models;
@@ -14,44 +15,39 @@ namespace Web_API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class SachController : ControllerBase
+	public class KhachHangController : ControllerBase
 	{
-		private readonly IDataRepository<Sach, SachDTO> _dataRepository;
-		public SachController(IDataRepository<Sach, SachDTO> dataRepository)
+		private readonly IDataRepository<KhachHang, KhachHangDTO> _dataRepository;
+		public KhachHangController(IDataRepository<KhachHang, KhachHangDTO> dataRepository)
 		{
 			_dataRepository = dataRepository;
 		}
 
-		// GET: api/<SachController>
+		// GET: api/<KhachHangController>
 		[HttpGet]
-		public IEnumerable<Sach> Get()
+		public IEnumerable<KhachHang> Get()
 		{
 			return _dataRepository.GetAll();
 		}
 
-		// GET api/<SachController>/5
+		// GET api/<KhachHangController>/5
 		[HttpGet("{id}")]
-		public IActionResult Get(string id)
+		public KhachHang Get(string id)
 		{
-			var sach = _dataRepository.Get(id);
-			if(sach==null)
-			{
-				return NotFound("Not found");
-			}
-			return Ok(sach);
+			return _dataRepository.Get(id);
 		}
 
-		[HttpGet("getallmasach")]
+		[HttpGet("getallmakhachhang")]
 		public IEnumerable<string> GetMKH(string id)
 		{
-			return (_dataRepository as SachDM).GetAllMaSach();
+			return (_dataRepository as KhachHangDM).GetAllMaKH();
 		}
 
-		// POST api/<SachController>
+		// POST api/<KhachHangController>
 		[HttpPost]
-		public IActionResult Post([FromBody] Sach value)
+		public IActionResult Post([FromBody] KhachHang value)
 		{
-			if ((_dataRepository as SachDM).CheckExist(value.MaSach))
+			if((_dataRepository as KhachHangDM).CheckExist(value.MaKh))
 			{
 				return Conflict();
 			}
@@ -59,11 +55,11 @@ namespace Web_API.Controllers
 			return Ok();
 		}
 
-		// PUT api/<SachController>/5
+		// PUT api/<KhachHangController>/5
 		[HttpPut("{id}")]
-		public IActionResult Put(string id, [FromBody] Sach value)
+		public IActionResult Put(string id, [FromBody] KhachHang value)
 		{
-			if (!(_dataRepository as SachDM).CheckExist(id))
+			if (!(_dataRepository as KhachHangDM).CheckExist(id))
 			{
 				return BadRequest();
 			}
@@ -71,11 +67,11 @@ namespace Web_API.Controllers
 			return Ok();
 		}
 
-		// DELETE api/<SachController>/5
+		// DELETE api/<KhachHangController>/5
 		[HttpDelete("{id}")]
 		public IActionResult Delete(string id)
 		{
-			if (!(_dataRepository as SachDM).CheckExist(id))
+			if (!(_dataRepository as KhachHangDM).CheckExist(id))
 			{
 				return BadRequest();
 			}

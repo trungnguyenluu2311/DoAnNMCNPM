@@ -9,5 +9,6 @@ namespace Web_API.Models.DTO
 	{
 		public string MaPn { get; set; }
 		public DateTime? NgayNhap { get; set; }
+		public List<SachDTO> Saches { get; set; }
 	}
 }

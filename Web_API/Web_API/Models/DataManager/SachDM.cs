@@ -27,9 +27,36 @@ namespace Web_API.Models.DataManager
 		{
 			return null;
 		}
+		public List<string> GetAllMaSach()
+		{
+			return _context.GetAllMaSach();
+		}
+		public bool CheckExist(string id)
+		{
+			var l = _context.GetAllMaSach();
+			return l.Contains(id);
+		}
 		public void Add(Sach sach)
 		{
+			sach.MaSach = SachIdGenerator();
 			_context.InsertSach(sach.MaSach, sach.TenSach, sach.TheLoai, sach.TacGia, sach.DonGia, sach.SoLuong);
+		}
+		private string SachIdGenerator()
+		{
+			var list = _context.GetAllMaSach();
+			string id;
+			Random r = new Random();
+			do
+			{
+				id = "SA";
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+			}
+			while (list.Contains(id));
+
+			return id;
 		}
 		public void Update(string id, Sach sach)
 		{

@@ -14,44 +14,32 @@ namespace Web_API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class SachController : ControllerBase
+	public class PhieuThuTienController : ControllerBase
 	{
-		private readonly IDataRepository<Sach, SachDTO> _dataRepository;
-		public SachController(IDataRepository<Sach, SachDTO> dataRepository)
+		private readonly IDataRepository<PhieuThuTien, PhieuThuTienDTO> _dataRepository;
+		public PhieuThuTienController(IDataRepository<PhieuThuTien, PhieuThuTienDTO> dataRepository)
 		{
 			_dataRepository = dataRepository;
 		}
-
-		// GET: api/<SachController>
+		// GET: api/<PhieuThuTienController>
 		[HttpGet]
-		public IEnumerable<Sach> Get()
+		public IEnumerable<PhieuThuTien> Get()
 		{
 			return _dataRepository.GetAll();
 		}
 
-		// GET api/<SachController>/5
+		// GET api/<PhieuThuTienController>/5
 		[HttpGet("{id}")]
-		public IActionResult Get(string id)
+		public PhieuThuTien Get(string id)
 		{
-			var sach = _dataRepository.Get(id);
-			if(sach==null)
-			{
-				return NotFound("Not found");
-			}
-			return Ok(sach);
+			return _dataRepository.Get(id);
 		}
 
-		[HttpGet("getallmasach")]
-		public IEnumerable<string> GetMKH(string id)
-		{
-			return (_dataRepository as SachDM).GetAllMaSach();
-		}
-
-		// POST api/<SachController>
+		// POST api/<PhieuThuTienController>
 		[HttpPost]
-		public IActionResult Post([FromBody] Sach value)
+		public IActionResult Post([FromBody] PhieuThuTien value)
 		{
-			if ((_dataRepository as SachDM).CheckExist(value.MaSach))
+			if ((_dataRepository as PhieuThuTienDM).CheckExist(value.MaKh))
 			{
 				return Conflict();
 			}
@@ -59,11 +47,11 @@ namespace Web_API.Controllers
 			return Ok();
 		}
 
-		// PUT api/<SachController>/5
+		// PUT api/<PhieuThuTienController>/5
 		[HttpPut("{id}")]
-		public IActionResult Put(string id, [FromBody] Sach value)
+		public IActionResult Put(string id, [FromBody] PhieuThuTien value)
 		{
-			if (!(_dataRepository as SachDM).CheckExist(id))
+			if (!(_dataRepository as PhieuThuTienDM).CheckExist(id))
 			{
 				return BadRequest();
 			}
@@ -71,11 +59,11 @@ namespace Web_API.Controllers
 			return Ok();
 		}
 
-		// DELETE api/<SachController>/5
+		// DELETE api/<PhieuThuTienController>/5
 		[HttpDelete("{id}")]
 		public IActionResult Delete(string id)
 		{
-			if (!(_dataRepository as SachDM).CheckExist(id))
+			if (!(_dataRepository as PhieuThuTienDM).CheckExist(id))
 			{
 				return BadRequest();
 			}

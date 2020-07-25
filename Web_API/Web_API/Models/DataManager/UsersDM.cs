@@ -17,8 +17,14 @@ namespace Web_API.Models.DataManager
 		}
 		public IEnumerable<Users> GetAll()
 		{
-			return _context.Users.ToList();
+			return null;
 		}
+
+		public List<string> GetAllUsername()
+		{
+			return _context.GetAllUsername();
+		}
+
 		public Users Get(string id)
 		{
 			return null;
@@ -27,8 +33,37 @@ namespace Web_API.Models.DataManager
 		{
 			return null;
 		}
-		public void Add(Users entity)
+		public bool CheckExist(Users user)
 		{
+			var u = _context.GetUsersBy(user.Username, user.Password);
+			return u != null;
+		}
+		public bool CheckUsername(string Username)
+		{
+			var list = _context.GetAllUsername();
+			return list.Contains(Username);
+		}
+		public void Add(Users user)
+		{
+			user.Id = UserIdGenerator();
+			_context.InsertUser(user.Id, user.Username, user.Password, user.QuyenHan);
+		}
+		private string UserIdGenerator()
+		{
+			var list = _context.GetAllUID();
+			string id;
+			Random r = new Random();
+			do
+			{
+				id = "US";
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+				id += r.Next(0, 9);
+			}
+			while (list.Contains(id));
+
+			return id;
 		}
 		public void Update(string id, Users entity)
 		{

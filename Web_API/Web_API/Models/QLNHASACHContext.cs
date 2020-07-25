@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -343,8 +344,14 @@ namespace Web_API.Models
                 .ToList()
                 .FirstOrDefault();
         }
+        public List<string> GetAllMaSach()
+        {
+            return this.Sach.FromSqlRaw("exec GetAllSach")
+                .Select(o => o.MaSach)
+                .ToList();
+        }
 
-		public void InsertSach(string id, string ten, string theloai, string tacgia, decimal? dongia, int? soluong)
+        public void InsertSach(string id, string ten, string theloai, string tacgia, decimal? dongia, int? soluong)
 		{
 			this.Database.ExecuteSqlCommand("exec InsertSach @p0, @p1, @p2, @p3, @p4, @p5",
 				parameters: new[] { id, ten, theloai, tacgia, dongia.ToString(), soluong.ToString() }
@@ -364,5 +371,160 @@ namespace Web_API.Models
                 parameters: new[] { id }
                 );
         }
+
+        public List<string> GetAllUsername()
+		{
+            return Users.FromSqlRaw("exec GetAllUser")
+                .Select(o=>o.Username)
+                .ToList();
+        }
+
+        public Users GetUsersBy(string username, string password)
+		{
+            return this.Users.FromSqlRaw("exec GetUserBy @p0, @p1",
+                parameters: new[] { username, password }
+                )
+                .ToList()
+                .FirstOrDefault();
+        }
+
+        public List<string> GetAllUID()
+		{
+            return Users.FromSqlRaw("exec GetAllUser")
+                .Select(o => o.Id)
+                .ToList();
+        }
+        public void InsertUser(string id, string username, string password, int? quyenhan)
+        {
+            this.Database.ExecuteSqlCommand("exec InsertUser @p0, @p1, @p2, @p3",
+                parameters: new[] { id, username, password, quyenhan.ToString() }
+                );
+        }
+
+        public List<KhachHang> GetAllKhachHang()
+		{
+            return this.KhachHang.FromSqlRaw("exec GetAllKhachHang")
+                .ToList();
+		}
+
+        public KhachHang GetKhachHang(string id)
+		{
+            return this.KhachHang.FromSqlRaw("exec GetKhachHang @p0",
+                parameters: new[] { id }
+                )
+                .ToList()
+                .FirstOrDefault();
+        }
+
+        public List<string> GetAllMaKhachHang()
+		{
+            return this.KhachHang.FromSqlRaw("exec GetAllKhachHang")
+                .Select(o => o.MaKh)
+                .ToList();
+        }
+
+        public void InsertKhachHang(string id, string ten, string diachi, string sdt, string email)
+		{
+            this.Database.ExecuteSqlCommand("exec InsertKhachHang @p0, @p1, @p2, @p3, @p4",
+                parameters: new[] { id, ten, diachi, sdt, email }
+                );
+        }
+        
+        public void UpdateKhachHang(string id, string ten, string diachi, string sdt, string email)
+        {
+            this.Database.ExecuteSqlCommand("exec UpdateKhachHang @p0, @p1, @p2, @p3, @p4",
+                   parameters: new[] { id, ten, diachi, sdt, email }
+                   );
+        }
+
+        public void DeleteKhachHang(string id)
+		{
+            this.Database.ExecuteSqlCommand("exec DeleteKhachHang @p0",
+                   parameters: new[] { id }
+                   );
+        }
+
+        public List<PhieuThuTien> GetAllPhieuThuTien()
+        {
+            return this.PhieuThuTien.FromSqlRaw("exec GetAllPhieuThuTien")
+                .ToList();
+        }
+
+        public PhieuThuTien GetPhieuThuTien(string id)
+        {
+            return this.PhieuThuTien.FromSqlRaw("exec GetPhieuThuTien @p0",
+                parameters: new[] { id }
+                )
+                .ToList()
+                .FirstOrDefault();
+        }
+
+        public List<string> GetAllMaPhieuThuTien()
+        {
+            return this.KhachHang.FromSqlRaw("exec GetAllPhieuThuTien")
+                .Select(o => o.MaKh)
+                .ToList();
+        }
+
+        public void InsertPhieuThuTien(string id, string mkh, string ten, string diachi, string sdt, string email, DateTime? ngaythu, decimal? tienthu)
+        {
+            this.Database.ExecuteSqlCommand("exec InsertPhieuThuTien @p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7",
+                parameters: new[] { id, mkh, ten, diachi, sdt, email, ngaythu.ToString(), tienthu.ToString() }
+                );
+        }
+
+        public void UpdatePhieuThuTien(string id, string mkh, string ten, string diachi, string sdt, string email, DateTime? ngaythu, decimal? tienthu)
+        {
+            this.Database.ExecuteSqlCommand("exec UpdatePhieuThuTien @p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7",
+                parameters: new[] { id, mkh, ten, diachi, sdt, email, ngaythu.ToString(), tienthu.ToString() }
+                );
+        }
+
+        public void DeletePhieuThuTien(string id)
+        {
+            this.Database.ExecuteSqlCommand("exec DeletePhieuThuTien @p0",
+                parameters: new[] { id }
+                );
+        }
+
+        public List<string> GetAllMaHoaDon()
+		{
+            return this.HoaDon.FromSqlRaw("exec GetAllHoaDon")
+                .Select(o => o.MaHd)
+                .ToList();
+        }
+
+        public void InsertHoaDon(string id, string makh, DateTime? ngaylap, decimal? thanhtien)
+		{
+            this.Database.ExecuteSqlCommand("exec InsertHoaDon @p0, @p1, @p2, @p3",
+                parameters: new[] { id, makh, ngaylap.ToString(), thanhtien.ToString() }
+                );
+        }
+        public void InsertCTHD(string id, string masach, int? soluong, decimal? dongia)
+        {
+            this.Database.ExecuteSqlCommand("exec InsertCTHD @p0, @p1, @p2, @p3",
+                parameters: new[] { id, masach, soluong.ToString(), dongia.ToString() }
+                );
+        }
+        public List<string> GetAllMaPhieuNhapSach()
+        {
+            return this.HoaDon.FromSqlRaw("exec GetAllPhieuNhapSach")
+                .Select(o => o.MaHd)
+                .ToList();
+        }
+
+        public void InsertPhieuNhap(string id, DateTime? ngaynhap)
+        {
+            this.Database.ExecuteSqlCommand("exec InsertPhieuNhap @p0, @p1",
+                parameters: new[] { id, ngaynhap.ToString() }
+                );
+        }
+        public void InsertCTPNS(string id, string masach, int? soluong, decimal? dongia)
+        {
+            this.Database.ExecuteSqlCommand("exec InsertCTPNS @p0, @p1, @p2, @p3",
+                parameters: new[] { id, masach, soluong.ToString(), dongia.ToString() }
+                );
+        }
+
     }
 }
