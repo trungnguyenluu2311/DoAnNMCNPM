@@ -33,11 +33,11 @@ namespace QuanLiNhaSach
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				HttpResponseMessage response = await client.GetAsync("api/khachhang/getallmakh");
+				HttpResponseMessage response = await client.GetAsync("api/khachhang/getallmakhachhang");
 
 				if (response.IsSuccessStatusCode)
 				{
@@ -55,7 +55,7 @@ namespace QuanLiNhaSach
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -89,7 +89,7 @@ namespace QuanLiNhaSach
 			string makh = comboBox1.Text;
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -126,7 +126,7 @@ namespace QuanLiNhaSach
 			string masach = comboBox2.Text;
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:50001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -216,7 +216,7 @@ namespace QuanLiNhaSach
 
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -224,8 +224,7 @@ namespace QuanLiNhaSach
 
 				if (response.IsSuccessStatusCode)
 				{
-					var check = await response.Content.ReadAsAsync<bool>();
-					if (check)
+					if (response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
 						MessageBox.Show("Lưu phiếu thành công", "Lưu phiếu thành công", MessageBoxButtons.OK);
 						button1_Click(null, null);

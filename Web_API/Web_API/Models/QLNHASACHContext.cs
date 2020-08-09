@@ -344,6 +344,17 @@ namespace Web_API.Models
                 .ToList()
                 .FirstOrDefault();
         }
+        public IEnumerable<Sach> GetSachBy(string id, string ten, string theloai, string tacgia)
+        {
+            return this.Sach.FromSqlRaw("exec GetAllSach")
+                .ToList()
+                .Where(o =>
+                (id != "_") ? o.MaSach.ToLower().Contains(id.ToLower()) : true &&
+                (ten != "_") ? o.TenSach.ToLower().Contains(ten.ToLower()) : true &&
+                (theloai != "_") ? o.TheLoai.ToLower().Contains(theloai.ToLower()) : true &&
+                (tacgia != "_") ? o.TacGia.ToLower().Contains(tacgia.ToLower()) : true
+                );
+        }
         public List<string> GetAllMaSach()
         {
             return this.Sach.FromSqlRaw("exec GetAllSach")

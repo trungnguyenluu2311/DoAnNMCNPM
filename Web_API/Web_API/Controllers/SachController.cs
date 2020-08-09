@@ -41,6 +41,12 @@ namespace Web_API.Controllers
 			return Ok(sach);
 		}
 
+		[HttpGet("id={id};ten={ten};theloai={tl};tacgia={tg}")]
+		public IEnumerable<Sach> Get(string id, string ten, string tl, string tg)
+		{
+			return (_dataRepository as SachDM).GetBy(id, ten, tl, tg);
+		}
+
 		[HttpGet("getallmasach")]
 		public IEnumerable<string> GetMKH(string id)
 		{

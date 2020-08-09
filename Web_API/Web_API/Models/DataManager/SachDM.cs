@@ -27,6 +27,11 @@ namespace Web_API.Models.DataManager
 		{
 			return null;
 		}
+		public IEnumerable<Sach> GetBy(string id, string ten, string theloai, string tacgia)
+		{
+			return _context.GetSachBy(id, ten, theloai, tacgia);
+		}
+
 		public List<string> GetAllMaSach()
 		{
 			return _context.GetAllMaSach();
