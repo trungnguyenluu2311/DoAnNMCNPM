@@ -8,14 +8,11 @@ namespace QuanLiNhaSach.Models
 {
 	public class HoaDon
 	{
-		public string MaHD { get; set; }
-		public Nullable<System.DateTime> NgayLap { get; set; }
-		public string MaKH { get; set; }
-		public string TenKH { get; set; }
-		public string DiaChi { get; set; }
-		public string DienThoai { get; set; }
-		public string Email { get; set; }
-		public Nullable<decimal> ThanhTien { get; set; }
+		public string MaHd { get; set; }
+		public DateTime? NgayLap { get; set; }
+		public string MaKh { get; set; }
+		public decimal? ThanhTien { get; set; }
+		public KhachHang KhachHang { get; set; }
 		public List<Sach> Saches { get; set; }
 	}
 }

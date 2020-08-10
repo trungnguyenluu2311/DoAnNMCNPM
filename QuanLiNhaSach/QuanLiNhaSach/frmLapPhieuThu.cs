@@ -82,7 +82,7 @@ namespace QuanLiNhaSach
 		private async void PostPhieuThuTien(string makh, string tenkh, string diachi, string sdt, string email, DateTime ngaythu, int tienthu)
 		{
 			PhieuThuTien phieu = new PhieuThuTien();
-			phieu.TenKH = tenkh;
+			phieu.TenKh = tenkh;
 			phieu.DiaChi = diachi;
 			phieu.DienThoai = sdt;
 			phieu.Email = email;
@@ -147,7 +147,7 @@ namespace QuanLiNhaSach
 				if (response.IsSuccessStatusCode)
 				{
 					var data = await response.Content.ReadAsAsync<KhachHang>();
-					textBox1.Text = data.TenKH;
+					textBox1.Text = data.TenKh;
 					textBox2.Text = data.DienThoai;
 					textBox4.Text = data.DiaChi;
 					textBox5.Text = data.Email;

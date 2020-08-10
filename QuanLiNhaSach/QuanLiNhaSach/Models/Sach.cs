@@ -12,7 +12,7 @@ namespace QuanLiNhaSach.Models
         public string TenSach { get; set; }
         public string TheLoai { get; set; }
         public string TacGia { get; set; }
-        public Nullable<decimal> DonGia { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public decimal? DonGia { get; set; }
+        public int? SoLuong { get; set; }
     }
 }

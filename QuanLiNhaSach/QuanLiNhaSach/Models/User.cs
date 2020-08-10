@@ -11,6 +11,6 @@ namespace QuanLiNhaSach.Models
 		public string Id { get; set; }
 		public string Username { get; set; }
 		public string Password { get; set; }
-		public Nullable<int> QuyenHan { get; set; }
+		public int? QuyenHan { get; set; }
 	}
 }

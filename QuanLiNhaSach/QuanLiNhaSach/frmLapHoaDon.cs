@@ -42,6 +42,7 @@ namespace QuanLiNhaSach
 				if (response.IsSuccessStatusCode)
 				{
 					var data = await response.Content.ReadAsAsync<List<string>>();
+					data.Insert(0, "Không");
 					comboBox1.DataSource = data;
 				}
 				else
@@ -64,6 +65,7 @@ namespace QuanLiNhaSach
 				if (response.IsSuccessStatusCode)
 				{
 					var data = await response.Content.ReadAsAsync<List<string>>();
+					data.Insert(0, "Không");
 					comboBox2.DataSource = data;
 				}
 				else
@@ -98,7 +100,7 @@ namespace QuanLiNhaSach
 				if (response.IsSuccessStatusCode)
 				{
 					var data = await response.Content.ReadAsAsync<KhachHang>();
-					textBox2.Text = data.TenKH;
+					textBox2.Text = data.TenKh;
 					textBox3.Text = data.DiaChi;
 					textBox4.Text = data.DienThoai;
 					textBox7.Text = data.Email;
@@ -126,7 +128,7 @@ namespace QuanLiNhaSach
 			string masach = comboBox2.Text;
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:50001/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -203,11 +205,11 @@ namespace QuanLiNhaSach
 		private async void PostHoaDon()
 		{
 			HoaDon hoadon = new HoaDon();
-			hoadon.MaKH = comboBox1.Text != "Không" ? comboBox1.Text : "Khong";
-			hoadon.TenKH = textBox2.Text;
-			hoadon.DiaChi = textBox3.Text;
-			hoadon.DienThoai = textBox4.Text;
-			hoadon.Email = textBox7.Text;
+			hoadon.MaKh = comboBox1.Text != "Không" ? comboBox1.Text : "Khong";
+			hoadon.KhachHang.TenKh = textBox2.Text;
+			hoadon.KhachHang.DiaChi = textBox3.Text;
+			hoadon.KhachHang.DienThoai = textBox4.Text;
+			hoadon.KhachHang.Email = textBox7.Text;
 			hoadon.NgayLap = dateTimePicker1.Value;
 			hoadon.ThanhTien = Convert.ToInt32(label10.Text);
 			hoadon.Saches = saches;
