@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanLiNhaSach.Models
+namespace Web_API.Models.DTO
 {
-    public class Sach
+	public class SachDTO
     {
         public string MaSach { get; set; }
         public string TenSach { get; set; }

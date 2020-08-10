@@ -31,11 +31,21 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.label11 = new System.Windows.Forms.Label();
+			this.textBox7 = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.label16 = new System.Windows.Forms.Label();
+			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox6 = new System.Windows.Forms.TextBox();
+			this.textBox8 = new System.Windows.Forms.TextBox();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox5 = new System.Windows.Forms.TextBox();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +60,8 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -58,21 +70,11 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.textBox7 = new System.Windows.Forms.TextBox();
-			this.label18 = new System.Windows.Forms.Label();
-			this.textBox8 = new System.Windows.Forms.TextBox();
-			this.label19 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -99,6 +101,8 @@
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.label12);
+			this.panel2.Controls.Add(this.label11);
 			this.panel2.Controls.Add(this.textBox7);
 			this.panel2.Controls.Add(this.label17);
 			this.panel2.Controls.Add(this.textBox4);
@@ -137,6 +141,74 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(1181, 556);
 			this.panel2.TabIndex = 1;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label11.Location = new System.Drawing.Point(625, 44);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(81, 24);
+			this.label11.TabIndex = 10;
+			this.label11.Text = "Tên sách";
+			// 
+			// textBox7
+			// 
+			this.textBox7.Location = new System.Drawing.Point(238, 128);
+			this.textBox7.Name = "textBox7";
+			this.textBox7.Size = new System.Drawing.Size(318, 22);
+			this.textBox7.TabIndex = 9;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label17.Location = new System.Drawing.Point(50, 128);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(56, 24);
+			this.label17.TabIndex = 8;
+			this.label17.Text = "Email";
+			// 
+			// textBox4
+			// 
+			this.textBox4.Location = new System.Drawing.Point(238, 100);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.Size = new System.Drawing.Size(318, 22);
+			this.textBox4.TabIndex = 9;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label16.Location = new System.Drawing.Point(50, 100);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(121, 24);
+			this.label16.TabIndex = 8;
+			this.label16.Text = "Số điện thoại";
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(238, 72);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(318, 22);
+			this.textBox3.TabIndex = 9;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label15.Location = new System.Drawing.Point(50, 72);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(66, 24);
+			this.label15.TabIndex = 8;
+			this.label15.Text = "Địa chỉ";
+			// 
+			// numericUpDown1
+			// 
+			this.numericUpDown1.Location = new System.Drawing.Point(742, 128);
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(71, 22);
+			this.numericUpDown1.TabIndex = 7;
 			// 
 			// dateTimePicker1
 			// 
@@ -179,6 +251,20 @@
 			this.textBox6.Name = "textBox6";
 			this.textBox6.Size = new System.Drawing.Size(337, 22);
 			this.textBox6.TabIndex = 3;
+			// 
+			// textBox8
+			// 
+			this.textBox8.Location = new System.Drawing.Point(938, 128);
+			this.textBox8.Name = "textBox8";
+			this.textBox8.Size = new System.Drawing.Size(141, 22);
+			this.textBox8.TabIndex = 3;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(742, 100);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(337, 22);
+			this.textBox1.TabIndex = 3;
 			// 
 			// textBox5
 			// 
@@ -309,6 +395,26 @@
 			this.label6.TabIndex = 1;
 			this.label6.Text = "Ngày lập hóa đơn";
 			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label19.Location = new System.Drawing.Point(841, 126);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(74, 24);
+			this.label19.TabIndex = 1;
+			this.label19.Text = "Đơn giá";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label18.Location = new System.Drawing.Point(625, 124);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(84, 24);
+			this.label18.TabIndex = 1;
+			this.label18.Text = "Số lượng";
+			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
@@ -405,97 +511,15 @@
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// numericUpDown1
+			// label12
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(742, 128);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(71, 22);
-			this.numericUpDown1.TabIndex = 7;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(742, 100);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(337, 22);
-			this.textBox1.TabIndex = 3;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(238, 72);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(318, 22);
-			this.textBox3.TabIndex = 9;
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label15.Location = new System.Drawing.Point(50, 72);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(66, 24);
-			this.label15.TabIndex = 8;
-			this.label15.Text = "Địa chỉ";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label16.Location = new System.Drawing.Point(50, 100);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(121, 24);
-			this.label16.TabIndex = 8;
-			this.label16.Text = "Số điện thoại";
-			// 
-			// textBox4
-			// 
-			this.textBox4.Location = new System.Drawing.Point(238, 100);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(318, 22);
-			this.textBox4.TabIndex = 9;
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label17.Location = new System.Drawing.Point(50, 128);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(56, 24);
-			this.label17.TabIndex = 8;
-			this.label17.Text = "Email";
-			// 
-			// textBox7
-			// 
-			this.textBox7.Location = new System.Drawing.Point(238, 128);
-			this.textBox7.Name = "textBox7";
-			this.textBox7.Size = new System.Drawing.Size(318, 22);
-			this.textBox7.TabIndex = 9;
-			// 
-			// label18
-			// 
-			this.label18.AutoSize = true;
-			this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label18.Location = new System.Drawing.Point(625, 124);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(84, 24);
-			this.label18.TabIndex = 1;
-			this.label18.Text = "Số lượng";
-			// 
-			// textBox8
-			// 
-			this.textBox8.Location = new System.Drawing.Point(938, 128);
-			this.textBox8.Name = "textBox8";
-			this.textBox8.Size = new System.Drawing.Size(141, 22);
-			this.textBox8.TabIndex = 3;
-			// 
-			// label19
-			// 
-			this.label19.AutoSize = true;
-			this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label19.Location = new System.Drawing.Point(841, 126);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(74, 24);
-			this.label19.TabIndex = 1;
-			this.label19.Text = "Đơn giá";
+			this.label12.AutoSize = true;
+			this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label12.Location = new System.Drawing.Point(50, 14);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(137, 24);
+			this.label12.TabIndex = 11;
+			this.label12.Text = "Mã khách hàng";
 			// 
 			// frmLapHoaDon
 			// 
@@ -512,10 +536,10 @@
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
-        
+
 		}
 
 		#endregion
@@ -561,5 +585,7 @@
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.TextBox textBox8;
 		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label12;
 	}
 }

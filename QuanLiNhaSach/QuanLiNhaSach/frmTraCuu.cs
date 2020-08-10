@@ -36,7 +36,7 @@ namespace QuanLiNhaSach
 
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -63,7 +63,7 @@ namespace QuanLiNhaSach
 			dataGridView1.Rows.Clear();
 			foreach(var sach in data)
 			{
-				dataGridView1.Rows.Add(sach.TenSach, sach.TheLoai, sach.TacGia, sach.SoLuong, sach.DonGia);
+				dataGridView1.Rows.Add(sach.MaSach, sach.TenSach, sach.TheLoai, sach.TacGia, sach.SoLuong, sach.DonGia);
 			}
 			dataGridView1.Refresh();
 		}

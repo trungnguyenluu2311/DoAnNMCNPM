@@ -57,16 +57,21 @@ namespace QuanLiNhaSach
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				User u = new User();
+				u.Username = username;
+				u.Password = password;
+
+				StringContent content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(u), Encoding.UTF8, "application/json");
+
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				HttpResponseMessage response = await client.GetAsync(string.Format("api/user/CheckUser/username={0};password={1}", username, password));
+				HttpResponseMessage response = await client.PostAsync("api/users/login", content);
 
 				if (response.IsSuccessStatusCode)
 				{
-					var check = await response.Content.ReadAsAsync<bool>();
-					if(check)
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
 						DialogResult = DialogResult.OK;
 						this.Close();
@@ -117,16 +122,15 @@ namespace QuanLiNhaSach
 
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				HttpResponseMessage response = await client.PostAsync("api/user", content);
+				HttpResponseMessage response = await client.PostAsync("api/users/register", content);
 
 				if (response.IsSuccessStatusCode)
 				{
-					var check = await response.Content.ReadAsAsync<bool>();
-					if(check)
+					if (response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
 						MessageBox.Show("Đăng kí thành công", "Đăng kí thành công", MessageBoxButtons.OK);
 						textBox3.Clear();

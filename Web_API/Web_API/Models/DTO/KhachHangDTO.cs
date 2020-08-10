@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanLiNhaSach.Models
+namespace Web_API.Models.DTO
 {
-	public class KhachHang
-	{
+	public class KhachHangDTO
+    {
         public string MaKh { get; set; }
         public string TenKh { get; set; }
         public string DiaChi { get; set; }

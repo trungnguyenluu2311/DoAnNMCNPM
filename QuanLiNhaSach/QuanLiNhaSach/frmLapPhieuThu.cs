@@ -29,11 +29,11 @@ namespace QuanLiNhaSach
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				HttpResponseMessage response = await client.GetAsync("api/khachhang/getallmakh");
+				HttpResponseMessage response = await client.GetAsync("api/khachhang/getallmakhachhang");
 
 				if (response.IsSuccessStatusCode)
 				{
@@ -82,7 +82,7 @@ namespace QuanLiNhaSach
 		private async void PostPhieuThuTien(string makh, string tenkh, string diachi, string sdt, string email, DateTime ngaythu, int tienthu)
 		{
 			PhieuThuTien phieu = new PhieuThuTien();
-			phieu.TenKH = tenkh;
+			phieu.TenKh = tenkh;
 			phieu.DiaChi = diachi;
 			phieu.DienThoai = sdt;
 			phieu.Email = email;
@@ -93,7 +93,7 @@ namespace QuanLiNhaSach
 
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -101,8 +101,7 @@ namespace QuanLiNhaSach
 
 				if (response.IsSuccessStatusCode)
 				{
-					var check = await response.Content.ReadAsAsync<bool>();
-					if (check)
+					if (response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
 						MessageBox.Show("Lưu phiếu thành công", "Lưu phiếu thành công", MessageBoxButtons.OK);
 						textBox1.Clear();
@@ -139,7 +138,7 @@ namespace QuanLiNhaSach
 			string makh = comboBox1.Text;
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("https://localhost:44393/");
+				client.BaseAddress = new Uri("https://localhost:5001/");
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -148,7 +147,7 @@ namespace QuanLiNhaSach
 				if (response.IsSuccessStatusCode)
 				{
 					var data = await response.Content.ReadAsAsync<KhachHang>();
-					textBox1.Text = data.TenKH;
+					textBox1.Text = data.TenKh;
 					textBox2.Text = data.DienThoai;
 					textBox4.Text = data.DiaChi;
 					textBox5.Text = data.Email;
